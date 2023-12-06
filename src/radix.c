@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:29 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/05 17:20:31 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/06 09:56:14 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
   
-#include "push_swap.h"
+#include "../push_swap.h"
 
-static int	get_max_bits(t_list **stack)
+static int	get_max_bits(t_stack_node **stack)
 {
-	t_list	*head;
+	t_stack_node	*head;
 	int		max;
 	int		max_bits;
 
@@ -33,9 +33,9 @@ static int	get_max_bits(t_list **stack)
 	return (max_bits);
 }
 
-void	radix_sort(t_list **stack_a, t_list **stack_b)
+void	radix_sort(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-	t_list	*head_a;
+	t_stack_node	*head_a;
 	int		i;
 	int		j;
 	int		size;

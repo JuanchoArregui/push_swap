@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:23 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/05 17:20:25 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/06 09:56:21 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-static int	get_min(t_list **stack, int val)
+static int	get_min(t_stack_node **stack, int val)
 {
-	t_list	*head;
+	t_stack_node	*head;
 	int		min;
 
 	head = *stack;
@@ -29,9 +29,9 @@ static int	get_min(t_list **stack, int val)
 	return (min);
 }
 
-static void	sort_3(t_list **stack_a)
+static void	sort_3(t_stack_node **stack_a)
 {
-	t_list	*head;
+	t_stack_node	*head;
 	int		min;
 	int		next_min;
 
@@ -65,7 +65,7 @@ static void	sort_3(t_list **stack_a)
 	}
 }
 
-static void	sort_4(t_list **stack_a, t_list **stack_b)
+static void	sort_4(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	int	distance;
 
@@ -88,7 +88,7 @@ static void	sort_4(t_list **stack_a, t_list **stack_b)
 	pa(stack_a, stack_b);
 }
 
-void	sort_5(t_list **stack_a, t_list **stack_b)
+void	sort_5(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	int	distance;
 
@@ -114,7 +114,7 @@ void	sort_5(t_list **stack_a, t_list **stack_b)
 	pa(stack_a, stack_b);
 }
 
-void	simple_sort(t_list **stack_a, t_list **stack_b)
+void	simple_sort(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	int	size;
 

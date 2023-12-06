@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   instructions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:16:05 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/05 17:22:24 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/06 09:56:02 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 // Swaps first two elements of a stack | sa and sb
 
-int	swap(t_list **stack)
+int	swap(t_stack_node **stack)
 {
-	t_list	*head;
-	t_list	*next;
+	t_stack_node	*head;
+	t_stack_node	*next;
 	int		tmp_val;
 	int		tmp_index;
 
@@ -36,7 +36,7 @@ int	swap(t_list **stack)
 	return (0);
 }
 
-int	sa(t_list **stack_a)
+int	sa(t_stack_node **stack_a)
 {
 	if (swap(stack_a) == -1)
 		return (-1);
@@ -44,7 +44,7 @@ int	sa(t_list **stack_a)
 	return (0);
 }
 
-int	sb(t_list **stack_b)
+int	sb(t_stack_node **stack_b)
 {
 	if (swap(stack_b) == -1)
 		return (-1);
@@ -52,7 +52,7 @@ int	sb(t_list **stack_b)
 	return (0);
 }
 
-int	ss(t_list **stack_a, t_list **stack_b)
+int	ss(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
 		return (-1);
@@ -64,11 +64,11 @@ int	ss(t_list **stack_a, t_list **stack_b)
 
 // Takes the first element of one stack and puts it at the top of another | pa and pb
 
-int	push(t_list **stack_to, t_list **stack_from)
+int	push(t_stack_node **stack_to, t_stack_node **stack_from)
 {
-	t_list	*tmp;
-	t_list	*head_to;
-	t_list	*head_from;
+	t_stack_node	*tmp;
+	t_stack_node	*head_to;
+	t_stack_node	*head_from;
 
 	if (ft_lstsize(*stack_from) == 0)
 		return (-1);
@@ -91,7 +91,7 @@ int	push(t_list **stack_to, t_list **stack_from)
 	return (0);
 }
 
-int	pa(t_list **stack_a, t_list **stack_b)
+int	pa(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	if (push(stack_a, stack_b) == -1)
 		return (-1);
@@ -99,7 +99,7 @@ int	pa(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-int	pb(t_list **stack_a, t_list **stack_b)
+int	pb(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	if (push(stack_b, stack_a) == -1)
 		return (-1);
@@ -109,10 +109,10 @@ int	pb(t_list **stack_a, t_list **stack_b)
 
 // Shift up all elements of a stack by 1. The first element becomes the last one | ra and rb
 
-int	rotate(t_list **stack)
+int	rotate(t_stack_node **stack)
 {
-	t_list	*head;
-	t_list	*tail;
+	t_stack_node	*head;
+	t_stack_node	*tail;
 
 	if (ft_lstsize(*stack) < 2)
 		return (-1);
@@ -124,7 +124,7 @@ int	rotate(t_list **stack)
 	return (0);
 }
 
-int	ra(t_list **stack_a)
+int	ra(t_stack_node **stack_a)
 {
 	if (rotate(stack_a) == -1)
 		return (-1);
@@ -132,7 +132,7 @@ int	ra(t_list **stack_a)
 	return (0);
 }
 
-int	rb(t_list **stack_b)
+int	rb(t_stack_node **stack_b)
 {
 	if (rotate(stack_b) == -1)
 		return (-1);
@@ -140,7 +140,7 @@ int	rb(t_list **stack_b)
 	return (0);
 }
 
-int	rr(t_list **stack_a, t_list **stack_b)
+int	rr(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
 		return (-1);
@@ -153,10 +153,10 @@ int	rr(t_list **stack_a, t_list **stack_b)
 
 // Shifts down all elements of a stack by 1. The last element becomes the first one | rra and rrb
 
-int	reverseRotate(t_list **stack)
+int	reverseRotate(t_stack_node **stack)
 {
-	t_list	*head;
-	t_list	*tail;
+	t_stack_node	*head;
+	t_stack_node	*tail;
 
 	if (ft_lstsize(*stack) < 2)
 		return (-1);
@@ -176,7 +176,7 @@ int	reverseRotate(t_list **stack)
 	return (0);
 }
 
-int	rra(t_list **stack_a)
+int	rra(t_stack_node **stack_a)
 {
 	if (reverseRotate(stack_a) == -1)
 		return (-1);
@@ -184,7 +184,7 @@ int	rra(t_list **stack_a)
 	return (0);
 }
 
-int	rrb(t_list **stack_b)
+int	rrb(t_stack_node **stack_b)
 {
 	if (reverseRotate(stack_b) == -1)
 		return (-1);
@@ -192,7 +192,7 @@ int	rrb(t_list **stack_b)
 	return (0);
 }
 
-int	rrr(t_list **stack_a, t_list **stack_b)
+int	rrr(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
 		return (-1);

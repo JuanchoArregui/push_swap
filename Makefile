@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+         #
+#    By: juancho <juancho@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2023/12/05 17:13:30 by jarregui         ###   ########.fr        #
+#    Updated: 2023/12/06 09:25:56 by juancho          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,10 @@ RM = rm -rf
 all: ${NAME} ${CHECK}
 ${NAME}: ${OBJS}
 	@${MAKE} -C ./libft
-	@${CC} ${CFLAGS} ${OBJS} ./libft/libft.a -o ${NAME}
+	@${CC} ${CFLAGS} ${OBJS} ./libft/* -o ${NAME}
 
 ${CHECK}: ${CHECK_OBJS} 
-	@${CC} ${CFLAGS} ${CHECK_OBJS} ./libft/libft.a -o ${CHECK}
+	@${CC} ${CFLAGS} ${CHECK_OBJS} ./libft/* -o ${CHECK}
 
 clean: 
 	@${MAKE} -C ./libft fclean
