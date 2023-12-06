@@ -6,12 +6,12 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/06 10:07:15 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/06 10:12:24 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 int	main(int argc, char **argv)
 {
