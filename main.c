@@ -6,24 +6,35 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/11 01:01:04 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/12 00:12:35 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
 
-int main(int argc, char **argv) {
+void ft_print_array(int argc, char **argv) {
     int i;
 
     i = 0;
     printf("argc: %d\n", argc);
-    printf("Array of arguments argv: [");
+    printf("[");
     while (i <argc)
-       printf("%s, ", argv[i++]);
-    printf("]\n\n");
+    {
+         printf("%s", argv[i]);
+         if (i < argc - 1)
+         printf(", ");
+         i++;
+    }
+    printf("]\n");
+}
 
 
+int main(int argc, char **argv) {
+
+    printf("argc: %d\n", argc);
+    printf("Array of arguments argv: ");
+    ft_print_array(argc, argv);
 
 
     if (argc < 2)
@@ -31,10 +42,8 @@ int main(int argc, char **argv) {
     ft_check_args(argc, argv);
 
     printf("Args are ok\n");
-    printf("Checked Array of numbers: [");
-     while (i <argc)
-       printf("%s, ", argv[i++]);
-    printf("]\n\n");
+    printf("Checked Array of numbers: ");
+    ft_print_array(argc, argv);
 
     // if (argc == 2) {
     //     i = 1;
