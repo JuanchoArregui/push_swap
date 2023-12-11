@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/10 23:55:31 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/11 00:55:49 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+
+// Functions for checking arguments
+void	ft_check_args(int argc, char **argv);
+
+// Functions for general utils
+void	ft_error(char *msg);
+
 
 // typedef struct s_stack_node
 // {

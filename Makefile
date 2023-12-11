@@ -6,7 +6,7 @@
 #    By: juancho <juancho@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2023/12/11 00:19:10 by juancho          ###   ########.fr        #
+#    Updated: 2023/12/11 00:54:59 by juancho          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CHECK = checker
 # SRCS =  $(wildcard src/*.c utils/*.c)
 # CHECK_SRCS = $(wildcard utils/*.c) src/instructions.c checker.c
 
-SRCS = main.c
+SRCS = main.c $(wildcard args/*.c utils/*.c)
 CHECK_SRCS = main.c
 
 OBJS = ${SRCS:.c=.o}
