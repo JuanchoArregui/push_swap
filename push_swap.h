@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/11 00:55:49 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/11 23:47:33 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@
 # include "libft/libft.h"
 
 // Functions for checking arguments
-void	ft_check_args(int argc, char **argv);
+void    ft_check_args(int argc, char **argv);
+int     ft_isnum(char *num);
+int     ft_contains(int num, char **argv, int i);
 
 // Functions for general utils
 void	ft_error(char *msg);
+void	ft_free(char **str);
+
 
 
 // typedef struct s_stack_node
@@ -40,8 +44,6 @@ void	ft_error(char *msg);
 // int		ft_lstsize(t_stack_node *head);
 
 // // Util functions 
-// void	ft_error(char *msg);
-// void	ft_check_args(int argc, char **argv);
 // int		is_sorted(t_stack_node **stack);
 // int		get_distance(t_stack_node **stack, int index);
 // void	make_top(t_stack_node **stack, int distance);
