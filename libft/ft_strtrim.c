@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/12 10:36:45 by jarregui         ###   ########.fr       */
+/*   Created: 2021/07/14 13:05:19 by jarregui          #+#    #+#             */
+/*   Updated: 2022/11/16 16:16:40 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	ft_error(char *msg)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	ft_putendl_fd(msg, 1);
-	exit(0);
-}
+	size_t	len;
+	char	*sn;
 
-void	ft_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
+	if (!s1 || !set)
+		return (NULL);
+	while (ft_strchr(set, *s1) && *s1 != '\0')
+		s1++;
+	if (*s1 == '\0')
+		return (ft_strdup(""));
+	len = ft_strlen(s1);
+	while (ft_strchr(set, s1[len]))
+		len--;
+	sn = ft_substr(s1, 0, len + 1);
+	return (sn);
 }

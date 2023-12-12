@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/12 10:36:45 by jarregui         ###   ########.fr       */
+/*   Created: 2021/07/14 12:23:03 by jarregui          #+#    #+#             */
+/*   Updated: 2022/11/16 16:04:45 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	ft_error(char *msg)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	ft_putendl_fd(msg, 1);
-	exit(0);
-}
+	unsigned char		*cp_dst;
+	unsigned const char	*cp_src;
 
-void	ft_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
+	cp_dst = (unsigned char *)dst;
+	cp_src = (unsigned const char *)src;
+	while ((cp_dst != 0 || cp_src != 0) && n--)
+		cp_dst[n] = cp_src[n];
+	return (dst);
 }

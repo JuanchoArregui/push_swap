@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/12 10:36:45 by jarregui         ###   ########.fr       */
+/*   Created: 2021/04/22 15:28:20 by jarregui          #+#    #+#             */
+/*   Updated: 2022/11/16 16:15:44 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	ft_error(char *msg)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	ft_putendl_fd(msg, 1);
-	exit(0);
-}
+	size_t	length;
+	size_t	i;
 
-void	ft_free(char **str)
-{
-	int	i;
-
+	length = 0;
 	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
+	while (src[length] != '\0')
+		++length;
+	if (size > 0)
+	{
+		while (src[i] != '\0' && i < (size - 1))
+		{
+			dst[i] = src[i];
+			++i;
+		}
+		dst[i] = '\0';
+	}
+	return (length);
 }

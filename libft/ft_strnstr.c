@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/12 10:36:45 by jarregui         ###   ########.fr       */
+/*   Created: 2021/07/14 12:42:12 by jarregui          #+#    #+#             */
+/*   Updated: 2022/11/16 16:16:18 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	ft_error(char *msg)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	ft_putendl_fd(msg, 1);
-	exit(0);
-}
-
-void	ft_free(char **str)
-{
-	int	i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
+	if (!(*needle))
+		return ((char *)haystack);
+	if (!len)
+		return (NULL);
+	while (haystack[i] && i < len)
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j] && haystack[i + j] && i + j < len)
+			j ++;
+		if (needle[j] == '\0')
+			return ((char *)haystack + i);
+		i ++;
+	}
+	return (NULL);
 }

@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/12 10:36:45 by jarregui         ###   ########.fr       */
+/*   Created: 2021/07/14 13:20:18 by jarregui          #+#    #+#             */
+/*   Updated: 2022/11/16 16:10:08 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	ft_error(char *msg)
+void	ft_putnbr_fd(int n, int fd)
 {
-	ft_putendl_fd(msg, 1);
-	exit(0);
-}
+	long	x;
+	char	c;
 
-void	ft_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
+	x = n;
+	c = '-';
+	if (x < 0)
+	{
+		write(fd, &c, 1);
+		x = -x;
+	}
+	if (x >= 10)
+	{
+		ft_putnbr_fd((x / 10), fd);
+		ft_putnbr_fd((x % 10), fd);
+	}
+	else
+	{
+		c = x + 48;
+		write(fd, &c, 1);
+	}
 }

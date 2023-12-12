@@ -3,93 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/12 00:12:35 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/12 10:37:31 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
-
+    
+    
 void ft_print_array(int argc, char **argv) {
-    int i;
+        int i;
 
-    i = 0;
-    printf("argc: %d\n", argc);
-    printf("[");
-    while (i <argc)
-    {
+        i = 0;
+        printf("argc: %d\n", argc);
+        printf("[");
+        while (i <argc)
+        {
          printf("%s", argv[i]);
          if (i < argc - 1)
          printf(", ");
          i++;
-    }
-    printf("]\n");
+        }
+        printf("]\n");
 }
 
 
 int main(int argc, char **argv) {
 
-    printf("argc: %d\n", argc);
-    printf("Array of arguments argv: ");
-    ft_print_array(argc, argv);
+        printf("argc: %d\n", argc);
+        printf("Array of arguments argv: ");
+        ft_print_array(argc, argv);
 
 
-    if (argc < 2)
+        if (argc < 2)
         return -1;
-    ft_check_args(argc, argv);
+        ft_check_args(argc, argv);
 
-    printf("Args are ok\n");
-    printf("Checked Array of numbers: ");
-    ft_print_array(argc, argv);
+        printf("Args are ok\n");
+        printf("Checked Array of numbers: ");
+        ft_print_array(argc, argv);
 
-    // if (argc == 2) {
-    //     i = 1;
-    //     int spaces = 0;
-    //     while (argv[1][i] != '\0') {
-    //         if (argv[1][i] == ' ')
-    //             spaces++;
-    //         i++;
-    //     }
-    //     printf("spaces: %d\n", spaces);
-    //     return 1;
-    // } else {
-    //     j = 0;
-    //     while (j < argc - 1)
-    //     {
-    //       numbers[j] = ft_atoi(argv[j + 1]);
-    //       j++;
-    //     }
-    //     printf("Array of numbers: [");
-    //     for (int i = 0; i < argc - 1; i++) {
-    //         printf("%d, ", numbers[i]);
-    //     }
-    //     printf("]\n");
-    //     return 1;
-    // }
+        // if (argc == 2) {
+        //       i = 1;
+        //       int spaces = 0;
+        //       while (argv[1][i] != '\0') {
+        //       if (argv[1][i] == ' ')
+        //       spaces++;
+        //       i++;
+        //       }
+        //       printf("spaces: %d\n", spaces);
+        //       return 1;
+        // } else {
+        //       j = 0;
+        //       while (j < argc - 1)
+        //       {
+        //         numbers[j] = ft_atoi(argv[j + 1]);
+        //         j++;
+        //       }
+        //       printf("Array of numbers: [");
+        //       for (int i = 0; i < argc - 1; i++) {
+        //       printf("%d, ", numbers[i]);
+        //       }
+        //       printf("]\n");
+        //       return 1;
+        // }
 
 	 // for (i = 1; i < argc; i++) {
-    //     char* end;
-    //     long val = strtol(argv[i], &end, 10);
-    //     if (end == argv[i] || *end != '\0') {
-    //         printf("Error\n");
-    //         return 1;
-    //     }
+        //       char* end;
+        //       long val = strtol(argv[i], &end, 10);
+        //       if (end == argv[i] || *end != '\0') {
+        //       printf("Error\n");
+        //       return 1;
+        //       }
 
-    //     for (j = 0; j < i - 1; j++) {
-    //         if (numbers[j] == val) {
-    //             printf("Error\n");
-    //             return 1;
-    //         }
-    //     }
+        //       for (j = 0; j < i - 1; j++) {
+        //       if (numbers[j] == val) {
+        //       printf("Error\n");
+        //       return 1;
+        //       }
+        //       }
 
-    //     numbers[i - 1] = val;
-    // }
+        //       numbers[i - 1] = val;
+        // }
 
-    printf("No duplicates found\n");
-    return 0;
+        printf("No duplicates found\n");
+        return 0;
 }
 
 // int	main(int argc, char **argv)

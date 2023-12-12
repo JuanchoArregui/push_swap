@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/11 23:47:33 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/12 10:33:24 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "libft/libft.h"
 
 // Functions for checking arguments
-void    ft_check_args(int argc, char **argv);
-int     ft_isnum(char *num);
-int     ft_contains(int num, char **argv, int i);
+void	ft_check_args(int argc, char **argv);
+int		ft_isnum(char *num);
+int		ft_contains(int num, char **argv, int i);
 
 // Functions for general utils
 void	ft_error(char *msg);

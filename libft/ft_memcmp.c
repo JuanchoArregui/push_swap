@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/12 10:36:45 by jarregui         ###   ########.fr       */
+/*   Created: 2021/07/14 12:22:37 by jarregui          #+#    #+#             */
+/*   Updated: 2022/11/16 16:04:36 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-void	ft_error(char *msg)
+int	ft_memcmp(const void *s1, const void *s2, unsigned int n)
 {
-	ft_putendl_fd(msg, 1);
-	exit(0);
-}
-
-void	ft_free(char **str)
-{
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (str[i])
+	while (i < n)
+	{
+		if (*(unsigned char *)(s1 + i) != *(unsigned char *)(s2 + i))
+			return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
 		i++;
-	while (i >= 0)
-		free(str[i--]);
+	}
+	return (0);
 }
