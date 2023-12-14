@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/12 10:37:31 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:53:28 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ void ft_print_array(int argc, char **argv) {
         int i;
 
         i = 0;
-        printf("argc: %d\n", argc);
-        printf("[");
+        ft_printf("argc: %d\n", argc);
+        ft_printf("[");
         while (i <argc)
         {
-         printf("%s", argv[i]);
+         ft_printf("%s", argv[i]);
          if (i < argc - 1)
-         printf(", ");
+         ft_printf(", ");
          i++;
         }
-        printf("]\n");
+        ft_printf("]\n");
 }
 
 
 int main(int argc, char **argv) {
 
-        printf("argc: %d\n", argc);
-        printf("Array of arguments argv: ");
+        ft_printf("argc: %d\n", argc);
+        ft_printf("Array of arguments argv: ");
         ft_print_array(argc, argv);
 
 
@@ -41,8 +41,8 @@ int main(int argc, char **argv) {
         return -1;
         ft_check_args(argc, argv);
 
-        printf("Args are ok\n");
-        printf("Checked Array of numbers: ");
+        ft_printf("Args are ok\n");
+        ft_printf("Checked Array of numbers: ");
         ft_print_array(argc, argv);
 
         // if (argc == 2) {
@@ -88,7 +88,7 @@ int main(int argc, char **argv) {
         //       numbers[i - 1] = val;
         // }
 
-        printf("No duplicates found\n");
+        ft_printf("No duplicates found\n");
         return 0;
 }
 
