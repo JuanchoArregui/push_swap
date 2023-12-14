@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juancho <juancho@student.42.fr>            +#+  +:+       +#+         #
+#    By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2023/12/14 12:40:46 by juancho          ###   ########.fr        #
+#    Updated: 2023/12/14 15:58:34 by jarregui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
