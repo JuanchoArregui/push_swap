@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/14 12:12:45 by juancho          ###   ########.fr       */
+/*   Created: 2021/07/14 12:03:22 by jarregui          #+#    #+#             */
+/*   Updated: 2023/12/14 12:23:51 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../libft.h"
 
-void	ft_error(char *msg)
+int	ft_isprint(int c)
 {
-	printf("%s\n", msg);
-	// ft_putendl_fd(msg, 1);
-	exit(0);
+	if (c >= ' ' && c <= '~')
+		return (1);
+	return (0);
 }
 
-void	ft_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
-}
+/* 
+Printable ascii characteres are from 32 ' ' (space) 
+to 126 '~'
+Characters from 0 to 31 and 127 are not printable.
+For more info check 'man ascii'
+*/

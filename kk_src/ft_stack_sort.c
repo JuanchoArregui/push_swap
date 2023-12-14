@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_stack_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/14 12:12:45 by juancho          ###   ########.fr       */
+/*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
+/*   Updated: 2023/12/06 10:07:58 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_error(char *msg)
+static void	ft_stack_sort(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-	printf("%s\n", msg);
-	// ft_putendl_fd(msg, 1);
-	exit(0);
-}
-
-void	ft_free(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
+	if (ft_lstsize(*stack_a) <= 5)
+		simple_sort(stack_a, stack_b);
+	else
+		radix_sort(stack_a, stack_b);
 }

@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/14 12:12:45 by juancho          ###   ########.fr       */
+/*   Created: 2021/07/14 12:21:57 by jarregui          #+#    #+#             */
+/*   Updated: 2023/12/14 12:23:51 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../libft.h"
 
-void	ft_error(char *msg)
+void	*ft_memchr(const void *s, int c, unsigned int n)
 {
-	printf("%s\n", msg);
-	// ft_putendl_fd(msg, 1);
-	exit(0);
-}
-
-void	ft_free(char **str)
-{
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (str[i])
+	while (i < n)
+	{
+		if ((*(unsigned char *)(s + i)) == (unsigned char) c)
+			return ((unsigned char *)(s + i));
 		i++;
-	while (i >= 0)
-		free(str[i--]);
+	}
+	return (NULL);
 }

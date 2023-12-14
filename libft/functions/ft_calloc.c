@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/14 12:12:45 by juancho          ###   ########.fr       */
+/*   Created: 2021/07/14 11:59:36 by jarregui          #+#    #+#             */
+/*   Updated: 2023/12/14 12:23:51 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../libft.h"
 
-void	ft_error(char *msg)
+void	*ft_calloc(size_t count, size_t size)
 {
-	printf("%s\n", msg);
-	// ft_putendl_fd(msg, 1);
-	exit(0);
-}
-
-void	ft_free(char **str)
-{
-	int	i;
+	void	*ptr;
+	size_t	i;
 
 	i = 0;
-	while (str[i])
-		i++;
-	while (i >= 0)
-		free(str[i--]);
+	if (size && count > SIZE_MAX / size)
+		return (NULL);
+	ptr = malloc (count * size);
+	if (!ptr)
+		return (NULL);
+	while (i < count * size)
+	{
+		((unsigned char *)ptr)[i] = 0;
+		i ++;
+	}
+	return (ptr);
 }
