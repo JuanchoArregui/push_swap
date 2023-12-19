@@ -1,0 +1,13 @@
+.gitignore
+/.vscode
+.*
+kk*
+*kk
+a.out
+*.gch
+*.o
+*.pdf
+
+*.iso
+README.md
+push_swap
