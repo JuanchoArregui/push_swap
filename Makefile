@@ -6,12 +6,24 @@
 #    By: juancho <juancho@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2023/12/14 12:40:46 by juancho          ###   ########.fr        #
+#    Updated: 2023/12/19 10:03:40 by juancho          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CHECK = checker
+
+
+OS := $(shell uname -s)
+ifeq ($(OS),Linux) # Estamos en Linux
+	OS_FOLDER = linux
+endif
+ifeq ($(OS),Darwin) # Darwin es para macOS
+	OS_FOLDER = mac
+endif
+ifeq ($(OS),Windows) # Estamos en windows
+	OS_FOLDER = windows
+endif
 
 # SRCS =  $(wildcard src/*.c utils/*.c)
 # CHECK_SRCS = $(wildcard utils/*.c) src/instructions.c checker.c
@@ -29,10 +41,10 @@ RM = rm -rf
 
 all: ${NAME} ${CHECK}
 ${NAME}: ${OBJS}
-	@${CC} ${CFLAGS} ${OBJS} ./libft/libft.a ./printf/printf.a -o ${NAME}
+	@${CC} ${CFLAGS} ${OBJS} ./libft/${OS_FOLDER}/libft.a ./printf/${OS_FOLDER}/printf.a -o ${NAME}
 
 ${CHECK}: ${CHECK_OBJS} 
-	@${CC} ${CFLAGS} ${CHECK_OBJS} ./libft/libft.a ./printf/printf.a -o ${CHECK}
+	@${CC} ${CFLAGS} ${CHECK_OBJS} ./libft/${OS_FOLDER}/libft.a ./printf/${OS_FOLDER}/printf.a -o ${CHECK}
 
 clean: 
 	@${RM} ${OBJS}
