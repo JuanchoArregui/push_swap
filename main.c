@@ -6,36 +6,11 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/20 16:47:18 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:01:20 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_print_array(int argc, char **argv)
-{
-	int	i;
-
-	i = 0;
-	ft_printf("argc: %d\n", argc);
-	ft_printf("[");
-	while (i < argc)
-	{
-		ft_printf("%s", argv[i]);
-		if (i < argc - 1)
-			ft_printf(", ");
-		i++;
-	}
-	ft_printf("]\n");
-}
-
-int	ft_array_length(void **array)
-{
-	int	longitud;
-
-	longitud = sizeof(array) / sizeof(array[0]);
-	return (longitud);
-}
 
 int	main(int argc, char **argv)
 {
@@ -44,7 +19,7 @@ int	main(int argc, char **argv)
 
 	ft_printf("argc: %d\n", argc);
 	ft_printf("Array of arguments argv: ");
-	ft_print_array(argc, argv);
+	ft_array_print(argv, 's');
 
 	if (argc < 2)
 		return (-1);
@@ -52,7 +27,7 @@ int	main(int argc, char **argv)
 
 	ft_printf("Args are ok\n");
 	ft_printf("Checked Array of numbers: ");
-	ft_print_array(argc, argv);
+	ft_array_print(args, 'i');
 
 	ft_printf("No duplicates found\n");
 	return (0);

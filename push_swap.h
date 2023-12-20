@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/14 15:58:29 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/20 16:58:04 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@
 # include "printf/printf.h"
 
 // Functions for checking arguments
-void	ft_check_args(int argc, char **argv);
+void	ft_array_print(void **array, char array_type);
+int		ft_array_length(void **array);
+int		**ft_check_args(int argc, char **argv);
+
 int		ft_isnum(char *num);
 int		ft_contains(int num, char **argv, int i);
+
+
 
 // Functions for general utils
 void	ft_error(char *msg);

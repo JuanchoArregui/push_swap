@@ -6,11 +6,38 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/20 16:44:56 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/20 16:56:58 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void	ft_array_print(void **array, char array_type)
+{
+	int	i;
+	int	length;
+
+	length = ft_array_length(array);
+
+	i = 0;
+	ft_printf("[");
+	while (array[i])
+	{
+		ft_printf("%s", array[i]);
+		if (i < length - 1)
+			ft_printf(", ");
+		i++;
+	}
+	ft_printf("]\n");
+}
+
+int	ft_array_length(void **array)
+{
+	int	length;
+
+	length = sizeof(array) / sizeof(array[0]);
+	return (length);
+}
 
 int	ft_contains(int num, char **argv, int i)
 {
