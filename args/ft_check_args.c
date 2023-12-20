@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/12 10:37:05 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/20 16:44:56 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,31 +41,32 @@ int	ft_isnum(char *num)
 }
 
 
-void	ft_check_args(int argc, char **argv)
+int	**ft_check_args(int argc, char **argv)
 {
 	int		i;
 	long	tmp;
-	char	**args;	
+	char	**temp_args;
+	int		**args;
 
 	i = 0;
 	if (argc == 2)
-		args = ft_split(argv[1], ' ');
+		temp_args = ft_split(argv[1], ' ');
 	else
 	{
 		i = 1;
-		args = argv;
+		temp_args = argv;
 	}
-	while (args[i])
+	while (temp_args[i])
 	{
-		tmp = ft_atoi(args[i]);
-		if (!ft_isnum(args[i]))
+		tmp = ft_atoi(temp_args[i]);
+		if (!ft_isnum(temp_args[i]))
 			ft_error("Error");
-		if (ft_contains(tmp, args, i))
+		if (ft_contains(tmp, temp_args, i))
 			ft_error("Error");
 		if (tmp < -2147483648 || tmp > 2147483647)
 			ft_error("Error");
 		i++;
 	}
 	if (argc == 2)
-		ft_free(args);
+		ft_free(temp_args);
 }
