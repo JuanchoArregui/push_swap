@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/20 16:58:04 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:48:16 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,15 @@
 # include "printf/printf.h"
 
 // Functions for checking arguments
-void	ft_array_print(void **array, char array_type);
-int		ft_array_length(void **array);
-int		**ft_check_args(int argc, char **argv);
-
-int		ft_isnum(char *num);
-int		ft_contains(int num, char **argv, int i);
-
-
+int		ft_arg_to_i(char **temp_args, unsigned int n, int **arg_num);
+char	**ft_args_split(int argc, char **argv);
+int		**ft_args_to_num(char **temp_args);
+int		**ft_args_check(int argc, char **argv);
 
 // Functions for general utils
-void	ft_error(char *msg);
-void	ft_free(char **str);
-
+void	ft_error(char **ptr_char, int **ptr_int);
+void	ft_array_str_print(char **array);
+void	ft_array_num_print(int **array);
 
 
 // typedef struct s_stack_node

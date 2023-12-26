@@ -6,94 +6,112 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/20 16:56:58 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/27 00:59:16 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_array_print(void **array, char array_type)
+int	ft_arg_to_i(char **temp_args, unsigned int n, int **arg_num)
 {
-	int	i;
-	int	length;
+	long			nb;
+	int				sign;
+	unsigned int	i;
 
-	length = ft_array_length(array);
-
+	nb = 0;
+	sign = 1;
 	i = 0;
-	ft_printf("[");
-	while (array[i])
+	if (temp_args[n][i] == '-' || temp_args[n][i] == '+')
 	{
-		ft_printf("%s", array[i]);
-		if (i < length - 1)
-			ft_printf(", ");
-		i++;
+		if (temp_args[n][i++] == '-')
+			sign *= -1;
 	}
-	ft_printf("]\n");
-}
-
-int	ft_array_length(void **array)
-{
-	int	length;
-
-	length = sizeof(array) / sizeof(array[0]);
-	return (length);
-}
-
-int	ft_contains(int num, char **argv, int i)
-{
-	i++;
-	while (argv[i])
+	while (temp_args[n][i])
 	{
-		if (ft_atoi(argv[i]) == num)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_isnum(char *num)
-{
-	int	i;
-
-	i = 0;
-	if (num[0] == '-')
-		i++;
-	while (num[i])
-	{
-		if (!ft_isdigit(num[i]))
+		if (temp_args[n][i] < '0' || temp_args[n][i] > '9')
 			return (0);
-		i++;
+		nb = (nb * 10) + temp_args[n][i++] - '0';
 	}
+	if (sign * nb < -2147483648 || sign * nb > 2147483647)
+		return (0);
+
+	*arg_num[n] = (int)(sign * nb);
 	return (1);
 }
 
-
-int	**ft_check_args(int argc, char **argv)
+char	**ft_args_split(int argc, char **argv)
 {
-	int		i;
-	long	tmp;
 	char	**temp_args;
-	int		**args;
+	int		i;
 
-	i = 0;
 	if (argc == 2)
+	{
 		temp_args = ft_split(argv[1], ' ');
+		if (!temp_args)
+			return (NULL);
+	}
 	else
 	{
+		temp_args = (char **)malloc((argc) * sizeof(char *));
+		if (!temp_args)
+			return (NULL);
 		i = 1;
-		temp_args = argv;
+		while (i < argc)
+		{
+			temp_args[i - 1] = argv[i];
+			i++;
+		}
+		temp_args[i] = NULL;
 	}
-	while (temp_args[i])
-	{
-		tmp = ft_atoi(temp_args[i]);
-		if (!ft_isnum(temp_args[i]))
-			ft_error("Error");
-		if (ft_contains(tmp, temp_args, i))
-			ft_error("Error");
-		if (tmp < -2147483648 || tmp > 2147483647)
-			ft_error("Error");
-		i++;
-	}
-	if (argc == 2)
-		ft_free(temp_args);
+	ft_printf("Splited array of strings: \n");
+	ft_array_str_print(temp_args);
+	return (temp_args);
 }
+
+int	**ft_args_to_num(char **temp_args)
+{
+	int				**arg_num;
+	int				length;
+	unsigned int	n;
+	int				check;
+
+	length = 0;
+	while (temp_args[length] != NULL)
+		length++;
+	arg_num = (int **)malloc((length + 1) * sizeof(int *));
+	if (!arg_num)
+		return (NULL);
+	n = 0;
+	while (temp_args[n])
+	{
+		check = ft_arg_to_i(temp_args, n, arg_num);
+		if (!check)
+			ft_error(temp_args, arg_num);
+		n++;
+	}
+	return (arg_num);
+}
+
+int	**ft_args_check(int argc, char **argv)
+{
+	char	**temp_args;
+	int		**arg_num;
+
+	temp_args = ft_args_split(argc, argv);
+	if (!temp_args)
+		exit (0);
+	arg_num = ft_args_to_num(temp_args);
+	if (*temp_args != NULL)
+	{
+		free(*temp_args);
+		*temp_args = NULL;
+	}
+	if (!arg_num)
+		exit (0);
+	return (arg_num);
+}
+
+
+/////   NOTA
+// Falta vr el segmentation que me da el array de números
+// Y CHECAR LOS DUPLICADOSSSSSSSSSS!!!!!!!
