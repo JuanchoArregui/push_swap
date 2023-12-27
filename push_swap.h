@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/27 00:48:16 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/27 23:01:52 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,22 @@
 # include "libft/libft.h"
 # include "printf/printf.h"
 
+typedef struct s_array_int
+{
+	unsigned int	length;
+	int				**array_int;
+}	t_array_int;
+
 // Functions for checking arguments
 int		ft_arg_to_i(char **temp_args, unsigned int n, int **arg_num);
 char	**ft_args_split(int argc, char **argv);
-int		**ft_args_to_num(char **temp_args);
-int		**ft_args_check(int argc, char **argv);
+void	ft_args_to_num(char **temp_args, t_array_int *arg_num);
+void	ft_args_check(int argc, char **argv, t_array_int *arg_num);
 
 // Functions for general utils
 void	ft_error(char **ptr_char, int **ptr_int);
-void	ft_array_str_print(char **array);
-void	ft_array_num_print(int **array);
+void	ft_print_array_str(char **array);
+void	ft_print_t_array_int(t_array_int *arg_num);
 
 
 // typedef struct s_stack_node

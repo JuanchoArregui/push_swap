@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/27 00:59:16 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/27 23:08:47 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,22 @@ char	**ft_args_split(int argc, char **argv)
 		temp_args[i] = NULL;
 	}
 	ft_printf("Splited array of strings: \n");
-	ft_array_str_print(temp_args);
+	ft_print_array_str(temp_args);
 	return (temp_args);
 }
 
-int	**ft_args_to_num(char **temp_args)
+void	ft_args_to_num(char **temp_args, t_array_int *arg_num)
 {
-	int				**arg_num;
-	int				length;
+	unsigned int	length;
 	unsigned int	n;
 	int				check;
 
 	length = 0;
 	while (temp_args[length] != NULL)
 		length++;
-	arg_num = (int **)malloc((length + 1) * sizeof(int *));
-	if (!arg_num)
+	arg_num->length = length;
+	arg_num->array_int = (int **)malloc((length) * sizeof(int));
+	if (!arg_num->array_int)
 		return (NULL);
 	n = 0;
 	while (temp_args[n])
@@ -92,26 +92,35 @@ int	**ft_args_to_num(char **temp_args)
 	return (arg_num);
 }
 
-int	**ft_args_check(int argc, char **argv)
+void	ft_args_check(int argc, char **argv, t_array_int *arg_num)
 {
-	char	**temp_args;
-	int		**arg_num;
+	char		**temp_args;
 
 	temp_args = ft_args_split(argc, argv);
 	if (!temp_args)
 		exit (0);
-	arg_num = ft_args_to_num(temp_args);
-	if (*temp_args != NULL)
-	{
-		free(*temp_args);
-		*temp_args = NULL;
-	}
-	if (!arg_num)
-		exit (0);
-	return (arg_num);
+
+	ft_args_to_num(temp_args, &arg_num);
+
+
+		
+
+	// arg_num = ft_args_to_num(temp_args);
+	// if (*temp_args != NULL)
+	// {
+	// 	free(*temp_args);
+	// 	*temp_args = NULL;
+	// }
+	// if (!arg_num)
+	// 	exit (0);
 }
 
 
 /////   NOTA
 // Falta vr el segmentation que me da el array de números
+
+//ESTOY A MEDIAS CON LA ESTRUCTURA DE ARRAY DE ENTEROS. CHECAR TODAS LAS FUNCIONES
+
+
+
 // Y CHECAR LOS DUPLICADOSSSSSSSSSS!!!!!!!
