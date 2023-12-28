@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/28 18:58:26 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/28 19:12:28 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_args_check(int argc, char **argv, t_array_int *arg_num);
 void	ft_error(char **ptr_char, t_array_int *arg_num);
 void	ft_print_array_str(char **array);
 void	ft_print_t_array_int(t_array_int *arg_num);
+void	ft_free_array_str(char **temp_args);
 
 
 // typedef struct s_stack_node

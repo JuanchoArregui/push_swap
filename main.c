@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/28 18:17:10 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/28 19:22:57 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	main(int argc, char **argv)
 		return (-1);
 	ft_args_check(argc, argv, &arg_num);
 
-	// ft_printf("Args are ok\n");
-	// ft_printf("Checked Array of numbers: ");
-	// ft_print_t_array_int(&arg_num);
+	ft_printf("Args are ok\n");
+	ft_printf("Checked Array of numbers: ");
+	ft_print_t_array_int(&arg_num);
 
 	ft_printf("No duplicates found\n");
 	return (0);

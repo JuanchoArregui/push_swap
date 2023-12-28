@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/28 18:21:22 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/28 19:28:40 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 void	ft_error(char **ptr_char, t_array_int *arg_num)
 {
-	if (*ptr_char != NULL)
-	{
-		free(*ptr_char);
-		*ptr_char = NULL;
-	}
+	ft_free_array_str(ptr_char);
 	if (arg_num->array_int != NULL)
 	{
 		free(arg_num->array_int);
@@ -77,5 +73,22 @@ void	ft_print_t_array_int(t_array_int *arg_num)
 		}
 	}
 	ft_printf("]\n");
+}
+
+void	ft_free_array_str(char **temp_args)
+{
+	int	i;
+	if	(*temp_args)
+	{
+		i = 0;
+		while (temp_args[i] != 0)
+		{
+			free(temp_args[i]);
+			temp_args[i] = NULL;
+			i++;
+		}
+		free(*temp_args);
+		temp_args = NULL;
+	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/28 19:01:21 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/28 19:30:06 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	ft_args_to_num(char **temp_args, t_array_int *arg_num)
 	while (length > 0)
 	{
 		check = ft_arg_to_i(temp_args, length - 1, arg_num);
-		printf("ft_args_to_num CHECK: %d\n", check);
+		printf("ft_args_to_num CHECK: %d\n\n\n", check);
 
 		if (!check)
 			ft_error(temp_args, arg_num);
@@ -107,22 +107,9 @@ void	ft_args_check(int argc, char **argv, t_array_int *arg_num)
 	if (!temp_args)
 		exit (0);
 	check = ft_args_to_num(temp_args, arg_num);
+	ft_free_array_str(temp_args);
 	if (!check)
-	{
-		free(*temp_args);
-		*temp_args = NULL;
-	}
-
-		
-
-	// arg_num = ft_args_to_num(temp_args);
-	// if (*temp_args != NULL)
-	// {
-	// 	free(*temp_args);
-	// 	*temp_args = NULL;
-	// }
-	// if (!arg_num)
-	// 	exit (0);
+		ft_error(temp_args, arg_num);
 }
 
 
