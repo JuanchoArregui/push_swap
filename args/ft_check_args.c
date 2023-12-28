@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/27 23:08:47 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/28 19:01:21 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_arg_to_i(char **temp_args, unsigned int n, int **arg_num)
+int	ft_arg_to_i(char **temp_args, unsigned int n, t_array_int *arg_num)
 {
 	long			nb;
 	int				sign;
 	unsigned int	i;
 
+	printf("ft_arg_to_i n: %d\n", n);
 	nb = 0;
 	sign = 1;
 	i = 0;
@@ -28,14 +29,17 @@ int	ft_arg_to_i(char **temp_args, unsigned int n, int **arg_num)
 	}
 	while (temp_args[n][i])
 	{
+	printf("ft_arg_to_i i: %d\n", i);
 		if (temp_args[n][i] < '0' || temp_args[n][i] > '9')
 			return (0);
 		nb = (nb * 10) + temp_args[n][i++] - '0';
 	}
 	if (sign * nb < -2147483648 || sign * nb > 2147483647)
 		return (0);
+	arg_num->array_int[n] = (int)(sign * nb);
 
-	*arg_num[n] = (int)(sign * nb);
+	printf("ft_arg_to_i arg_num->array_int[n]: %d\n", arg_num->array_int[n]);
+
 	return (1);
 }
 
@@ -61,47 +65,53 @@ char	**ft_args_split(int argc, char **argv)
 			temp_args[i - 1] = argv[i];
 			i++;
 		}
-		temp_args[i] = NULL;
+		temp_args[i-1] = 0;
 	}
 	ft_printf("Splited array of strings: \n");
 	ft_print_array_str(temp_args);
 	return (temp_args);
 }
 
-void	ft_args_to_num(char **temp_args, t_array_int *arg_num)
+int	ft_args_to_num(char **temp_args, t_array_int *arg_num)
 {
 	unsigned int	length;
-	unsigned int	n;
 	int				check;
 
 	length = 0;
-	while (temp_args[length] != NULL)
+	while (temp_args[length] != 0)
 		length++;
+
+	printf("ft_args_to_num length: %d\n", length);
 	arg_num->length = length;
-	arg_num->array_int = (int **)malloc((length) * sizeof(int));
+	arg_num->array_int = (int *)malloc((length) * sizeof(int));
 	if (!arg_num->array_int)
-		return (NULL);
-	n = 0;
-	while (temp_args[n])
+		return (0);
+	while (length > 0)
 	{
-		check = ft_arg_to_i(temp_args, n, arg_num);
+		check = ft_arg_to_i(temp_args, length - 1, arg_num);
+		printf("ft_args_to_num CHECK: %d\n", check);
+
 		if (!check)
 			ft_error(temp_args, arg_num);
-		n++;
+		length--;
 	}
-	return (arg_num);
+	return (1);
 }
 
 void	ft_args_check(int argc, char **argv, t_array_int *arg_num)
 {
 	char		**temp_args;
+	int			check;
 
 	temp_args = ft_args_split(argc, argv);
 	if (!temp_args)
 		exit (0);
-
-	ft_args_to_num(temp_args, &arg_num);
-
+	check = ft_args_to_num(temp_args, arg_num);
+	if (!check)
+	{
+		free(*temp_args);
+		*temp_args = NULL;
+	}
 
 		
 
@@ -122,5 +132,5 @@ void	ft_args_check(int argc, char **argv, t_array_int *arg_num)
 //ESTOY A MEDIAS CON LA ESTRUCTURA DE ARRAY DE ENTEROS. CHECAR TODAS LAS FUNCIONES
 
 
-
+// LEAKS: AL LIBERAR TEMP_ARGS FALTA LIBERAR CADA MALLOC DE CADA ELEMNTO DEL ARRAY
 // Y CHECAR LOS DUPLICADOSSSSSSSSSS!!!!!!!

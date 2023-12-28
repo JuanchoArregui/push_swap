@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/27 23:02:33 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/28 18:21:22 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_error(char **ptr_char, int **ptr_int)
+void	ft_error(char **ptr_char, t_array_int *arg_num)
 {
 	if (*ptr_char != NULL)
 	{
 		free(*ptr_char);
 		*ptr_char = NULL;
 	}
-	if (*ptr_int != NULL)
+	if (arg_num->array_int != NULL)
 	{
-		free(*ptr_int);
-		*ptr_int = NULL;
+		free(arg_num->array_int);
+		arg_num->array_int = NULL;
 	}
 	ft_printf("Error\n");
 	exit(0);
@@ -34,11 +34,21 @@ void	ft_print_array_str(char **array)
 	int	length;
 
 	length = 0;
-	while (array[length] != NULL)
+
+
+
+
+	while (array[length] != 0){
+		printf("%d\n", length);
+		printf("array[%d]: %s\n", length, array[length]);
 		length++;
+	}
+
+
+	printf("length del array a imprimir: %d\n", length);
 	i = 0;
 	ft_printf("[");
-	while (array[i] != NULL)
+	while (array[i] != 0)
 	{
 		ft_printf("%s", array[i]);
 		if (i < length - 1)

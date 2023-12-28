@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/27 23:01:52 by jarregui         ###   ########.fr       */
+/*   Updated: 2023/12/28 18:17:10 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ int	main(int argc, char **argv)
 	arg_num.array_int = NULL;
 	
 	ft_printf("argc: %d\n", argc);
-	ft_printf("Array of arguments argv: ");
+	ft_printf("Array of arguments argv:\n");
 	ft_print_array_str(argv);
 
 	if (argc < 2)
 		return (-1);
 	ft_args_check(argc, argv, &arg_num);
 
-	ft_printf("Args are ok\n");
-	ft_printf("Checked Array of numbers: ");
-	ft_print_t_array_int(&arg_num);
+	// ft_printf("Args are ok\n");
+	// ft_printf("Checked Array of numbers: ");
+	// ft_print_t_array_int(&arg_num);
 
 	ft_printf("No duplicates found\n");
 	return (0);
