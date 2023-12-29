@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/28 19:28:40 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/29 00:38:33 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,8 @@ void	ft_print_array_str(char **array)
 	int	length;
 
 	length = 0;
-
-
-
-
-	while (array[length] != 0){
-		printf("%d\n", length);
-		printf("array[%d]: %s\n", length, array[length]);
+	while (array[length] != 0)
 		length++;
-	}
-
-
-	printf("length del array a imprimir: %d\n", length);
 	i = 0;
 	ft_printf("[");
 	while (array[i] != 0)
@@ -87,8 +77,7 @@ void	ft_free_array_str(char **temp_args)
 			temp_args[i] = NULL;
 			i++;
 		}
-		free(*temp_args);
+		free(temp_args);
 		temp_args = NULL;
 	}
 }
-

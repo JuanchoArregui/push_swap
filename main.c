@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/28 19:22:57 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/29 00:39:43 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	ft_printf("argc: %d\n", argc);
 	ft_printf("Array of arguments argv:\n");
 	ft_print_array_str(argv);
+	ft_printf("\n");
 
 	if (argc < 2)
 		return (-1);
