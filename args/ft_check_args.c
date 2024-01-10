@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/28 19:30:06 by juancho          ###   ########.fr       */
+/*   Updated: 2023/12/29 01:09:32 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,27 @@ char	**ft_args_split(int argc, char **argv)
 	}
 	else
 	{
-		temp_args = (char **)malloc((argc) * sizeof(char *));
+		temp_args = (char **)malloc(sizeof(char *) * (argc));
 		if (!temp_args)
 			return (NULL);
 		i = 1;
 		while (i < argc)
 		{
-			temp_args[i - 1] = argv[i];
+			temp_args[i - 1] = (char *)malloc(sizeof(char) * (ft_strlen(argv[i]) + 1));
+			ft_strcpy(argv[i], temp_args[i - 1], 0);
 			i++;
 		}
 		temp_args[i-1] = 0;
 	}
+
+
+
+
+
+
 	ft_printf("Splited array of strings: \n");
 	ft_print_array_str(temp_args);
+	ft_printf("\n");
 	return (temp_args);
 }
 
@@ -104,8 +112,8 @@ void	ft_args_check(int argc, char **argv, t_array_int *arg_num)
 	int			check;
 
 	temp_args = ft_args_split(argc, argv);
-	if (!temp_args)
-		exit (0);
+	// if (!temp_args)
+	// 	exit (0);
 	check = ft_args_to_num(temp_args, arg_num);
 	ft_free_array_str(temp_args);
 	if (!check)
