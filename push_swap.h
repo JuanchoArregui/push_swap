@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/28 19:12:28 by juancho          ###   ########.fr       */
+/*   Updated: 2024/01/10 16:03:39 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_array_int
 }	t_array_int;
 
 // Functions for checking arguments
+int		ft_unique(int num_to_check, unsigned int n, t_array_int *arg_num);
 int		ft_arg_to_i(char **temp_args, unsigned int n, t_array_int *arg_num);
 char	**ft_args_split(int argc, char **argv);
 int		ft_args_to_num(char **temp_args, t_array_int *arg_num);

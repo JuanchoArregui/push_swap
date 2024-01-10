@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juancho <juancho@student.42.fr>            +#+  +:+       +#+         #
+#    By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2023/12/29 01:16:35 by juancho          ###   ########.fr        #
+#    Updated: 2024/01/10 15:09:42 by jarregui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,8 @@ OBJS = ${SRCS:.c=.o}
 CHECK_OBJS = ${CHECK_SRCS:.c=.o}
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iincludes
-# CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+# CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 RM = rm -rf
 

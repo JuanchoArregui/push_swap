@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/29 01:09:32 by juancho          ###   ########.fr       */
+/*   Updated: 2024/01/10 16:34:06 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int	ft_unique(int num_to_check, unsigned int n, t_array_int *arg_num)
+{
+	unsigned int	i;
+
+	i = arg_num->length - 1;
+	if (n == i)
+		return (1);
+	while (i > n)
+	{
+		if (arg_num->array_int[i] == num_to_check)
+			return (0);
+		i--;
+	}
+	return (1);
+}
 
 int	ft_arg_to_i(char **temp_args, unsigned int n, t_array_int *arg_num)
 {
@@ -18,7 +34,6 @@ int	ft_arg_to_i(char **temp_args, unsigned int n, t_array_int *arg_num)
 	int				sign;
 	unsigned int	i;
 
-	printf("ft_arg_to_i n: %d\n", n);
 	nb = 0;
 	sign = 1;
 	i = 0;
@@ -29,17 +44,15 @@ int	ft_arg_to_i(char **temp_args, unsigned int n, t_array_int *arg_num)
 	}
 	while (temp_args[n][i])
 	{
-	printf("ft_arg_to_i i: %d\n", i);
 		if (temp_args[n][i] < '0' || temp_args[n][i] > '9')
 			return (0);
 		nb = (nb * 10) + temp_args[n][i++] - '0';
 	}
 	if (sign * nb < -2147483648 || sign * nb > 2147483647)
 		return (0);
+	if (!ft_unique((int)(sign * nb), n, arg_num))
+		return (0);
 	arg_num->array_int[n] = (int)(sign * nb);
-
-	printf("ft_arg_to_i arg_num->array_int[n]: %d\n", arg_num->array_int[n]);
-
 	return (1);
 }
 
@@ -88,8 +101,6 @@ int	ft_args_to_num(char **temp_args, t_array_int *arg_num)
 	length = 0;
 	while (temp_args[length] != 0)
 		length++;
-
-	printf("ft_args_to_num length: %d\n", length);
 	arg_num->length = length;
 	arg_num->array_int = (int *)malloc((length) * sizeof(int));
 	if (!arg_num->array_int)
@@ -97,8 +108,6 @@ int	ft_args_to_num(char **temp_args, t_array_int *arg_num)
 	while (length > 0)
 	{
 		check = ft_arg_to_i(temp_args, length - 1, arg_num);
-		printf("ft_args_to_num CHECK: %d\n\n\n", check);
-
 		if (!check)
 			ft_error(temp_args, arg_num);
 		length--;
