@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/29 00:38:33 by juancho          ###   ########.fr       */
+/*   Updated: 2024/01/10 17:08:27 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	ft_print_t_array_int(t_array_int *arg_num)
 void	ft_free_array_str(char **temp_args)
 {
 	int	i;
-	if	(*temp_args)
+
+	if (*temp_args)
 	{
 		i = 0;
 		while (temp_args[i] != 0)

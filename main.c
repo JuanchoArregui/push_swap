@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/29 00:39:43 by juancho          ###   ########.fr       */
+/*   Updated: 2024/01/10 17:11:38 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 
 int	main(int argc, char **argv)
 {
-	t_array_int	arg_num;
+	t_array_int		arg_num;
+	t_stack_node	stack_a;
+	t_stack_node	stack_b;
 
 	arg_num.length = 0;
 	arg_num.array_int = NULL;
-	
-	ft_printf("argc: %d\n", argc);
-	ft_printf("Array of arguments argv:\n");
-	ft_print_array_str(argv);
-	ft_printf("\n");
-
 	if (argc < 2)
 		return (-1);
 	ft_args_check(argc, argv, &arg_num);
 
-	ft_printf("Args are ok\n");
+	ft_printf("Args are ok and No duplicates found\n");
 	ft_printf("Checked Array of numbers: ");
 	ft_print_t_array_int(&arg_num);
 
-	ft_printf("No duplicates found\n");
+	ft_stack_init(&stack_a, &arg_num);
+	ft_stack_init(&stack_b, NULL);
+
 	return (0);
 }
 

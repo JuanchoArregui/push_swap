@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2024/01/10 16:34:06 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:50:23 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,20 +121,8 @@ void	ft_args_check(int argc, char **argv, t_array_int *arg_num)
 	int			check;
 
 	temp_args = ft_args_split(argc, argv);
-	// if (!temp_args)
-	// 	exit (0);
 	check = ft_args_to_num(temp_args, arg_num);
 	ft_free_array_str(temp_args);
 	if (!check)
 		ft_error(temp_args, arg_num);
 }
-
-
-/////   NOTA
-// Falta vr el segmentation que me da el array de números
-
-//ESTOY A MEDIAS CON LA ESTRUCTURA DE ARRAY DE ENTEROS. CHECAR TODAS LAS FUNCIONES
-
-
-// LEAKS: AL LIBERAR TEMP_ARGS FALTA LIBERAR CADA MALLOC DE CADA ELEMNTO DEL ARRAY
-// Y CHECAR LOS DUPLICADOSSSSSSSSSS!!!!!!!
