@@ -6,7 +6,7 @@
 #    By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2024/01/10 15:09:42 by jarregui         ###   ########.fr        #
+#    Updated: 2024/02/07 17:02:10 by jarregui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ CHECK_OBJS = ${CHECK_SRCS:.c=.o}
 
 CC = gcc
 # CFLAGS = -Wall -Wextra -Werror -Iincludes
+# CFLAGS = -Wall -Wextra -Werror
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 RM = rm -rf
