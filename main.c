@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/29 00:39:43 by juancho          ###   ########.fr       */
+/*   Updated: 2024/02/08 17:03:03 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 int	main(int argc, char **argv)
 {
 	t_array_int	arg_num;
+	t_stack		*stack_a;
+	// t_stack		*stack_b;
+
 
 	arg_num.length = 0;
 	arg_num.array_int = NULL;
@@ -29,10 +32,17 @@ int	main(int argc, char **argv)
 	ft_args_check(argc, argv, &arg_num);
 
 	ft_printf("Args are ok\n");
+	ft_printf("No duplicates found\n");
 	ft_printf("Checked Array of numbers: ");
 	ft_print_t_array_int(&arg_num);
 
-	ft_printf("No duplicates found\n");
+	stack_a = ft_init_stack(&arg_num);
+
+	ft_printf("\nPrinting Stack linked structures: ");
+	ft_print_stack(stack_a);
+
+
+
 	return (0);
 }
 
