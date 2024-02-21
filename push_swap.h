@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/21 13:21:02 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:30:26 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@ typedef struct s_array_int
 	unsigned int	length;
 	int				*array_int;
 }	t_array_int;
-
-typedef struct s_stack_node
-{
-	int					value;
-	int					index;
-	struct s_stack_node	*next;
-}	t_stack_node;
 
 // Stack
 // NOTA: lo llamo s_stack porque en la libft ya está definida esa estructura,
@@ -59,16 +52,6 @@ t_stack	*ft_stack_elem_new(int value, t_stack	*next);
 void	ft_stack_print(t_stack *head, const char *mode);
 int		ft_stack_is_sorted(t_stack *st_head);
 void	ft_stack_free(t_stack **stack_ptr);
-
-// Functions for general utils
-t_stack	*ft_stack_init(t_array_int *arg_num);
-t_stack	*ft_stack_elem_new(int value, t_stack	*next);
-void	ft_stack_print(t_stack *head, const char *mode);
-int		ft_stack_is_sorted(t_stack *st_head);
-void	ft_stack_free(t_stack **stack_ptr);
-
-//Functions for operating Stacks
-void	ft_stack_init(t_stack_node	*stack, t_array_int *arg_num);
 
 
 // // Custom Functions from libft but adapted to new struct t_stack_node

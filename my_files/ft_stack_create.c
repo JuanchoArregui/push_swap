@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/21 13:11:17 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:29:59 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,4 @@ void	ft_stack_free(t_stack **stack_ptr)
 		st_current = st_next;
 	}
 }
+
