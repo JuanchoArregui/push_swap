@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/21 13:30:26 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:45:14 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,16 @@ void	ft_print_array_str(char **array);
 void	ft_print_t_array_int(t_array_int *arg_num);
 void	ft_free_array_str(char **temp_args);
 
-// Functions for general utils
+// Functions for STACKS handling
 t_stack	*ft_stack_init(t_array_int *arg_num);
 t_stack	*ft_stack_elem_new(int value, t_stack	*next);
-void	ft_stack_print(t_stack *head, const char *mode);
 int		ft_stack_is_sorted(t_stack *st_head);
 void	ft_stack_free(t_stack **stack_ptr);
 
+// Functions for STACKS printing
+int		ft_stack_size(t_stack *stack);
+void	ft_stack_print(t_stack *head, const char *mode);
+void	ft_stacks_print(t_stack *stack_a, t_stack *stack_b);
 
 // // Custom Functions from libft but adapted to new struct t_stack_node
 // t_stack_node	*ft_lstnew(int value);

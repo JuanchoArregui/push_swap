@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/21 13:29:59 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:20:32 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,6 @@ t_stack	*ft_stack_elem_new(int value, t_stack	*next)
 	stack_elem->value = value;
 	stack_elem->next = next;
 	return (stack_elem);
-}
-
-void	ft_stack_print(t_stack *head, const char *mode)
-{
-	t_stack	*tmp;
-	int		brackets;
-
-	if (mode && ft_strcmp(mode, "detalle") == 0)
-		brackets = 1;
-	else
-		brackets = 0;
-	tmp = head;
-	while (tmp != NULL)
-	{
-		if (brackets)
-			ft_printf("\n{\n value: %d, \n next: %p\n}", tmp->value, tmp->next);
-		else
-		{
-			ft_printf("%d", tmp->value);
-			if (tmp->next != NULL)
-				ft_printf(" -> ");
-		}
-		tmp = tmp->next;
-	}
 }
 
 int	ft_stack_is_sorted(t_stack *st_head)
