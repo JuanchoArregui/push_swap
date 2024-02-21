@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/08 17:01:53 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:06:44 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_array_int
 }	t_array_int;
 
 // Stack
-// NOTA: lo llamo s_list porque en la libft ya está definida esa estructura,
-// pero de forma diferente.
+// NOTA: lo llamo s_stack porque en la libft ya está definida esa estructura,
+// como s_list pero de forma diferente.
 typedef struct s_stack
 {
 	int				value;
@@ -47,9 +47,11 @@ void	ft_print_t_array_int(t_array_int *arg_num);
 void	ft_free_array_str(char **temp_args);
 
 // Functions for general utils
-t_stack	*ft_init_stack(t_array_int *arg_num);
+t_stack	*ft_stack_init(t_array_int *arg_num);
 t_stack	*ft_stack_elem_new(int value, t_stack	*next);
-void	ft_print_stack(t_stack *head);
+void	ft_stack_print(t_stack *head, const char *mode);
+int		ft_stack_is_sorted(t_stack *st_head);
+void	ft_stack_free(t_stack **stack_ptr);
 
 
 // typedef struct s_stack_node
