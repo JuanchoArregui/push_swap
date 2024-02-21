@@ -6,7 +6,7 @@
 #    By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2024/01/10 15:09:42 by jarregui         ###   ########.fr        #
+#    Updated: 2024/02/08 16:47:59 by jarregui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,24 +28,25 @@ endif
 # SRCS =  $(wildcard src/*.c utils/*.c)
 # CHECK_SRCS = $(wildcard utils/*.c) src/instructions.c checker.c
 
-SRCS = main.c $(wildcard utils/*.c args/*.c)
-CHECK_SRCS = main.c $(wildcard utils/*.c args/*.c)
+SRCS = main.c $(wildcard my_files/*.c)
+CHECK_SRCS = main.c $(wildcard my_files/*.c)
 
 OBJS = ${SRCS:.c=.o}
 CHECK_OBJS = ${CHECK_SRCS:.c=.o}
 
 CC = gcc
 # CFLAGS = -Wall -Wextra -Werror -Iincludes
+# CFLAGS = -Wall -Wextra -Werror
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 RM = rm -rf
 
 all: ${NAME} ${CHECK}
 ${NAME}: ${OBJS}
-	@${CC} ${CFLAGS} ${OBJS} ./libft/${OS_FOLDER}/libft.a ./printf/${OS_FOLDER}/printf.a -o ${NAME}
+	@${CC} ${CFLAGS} ${OBJS} ./my_libs/libft/${OS_FOLDER}/libft.a ./my_libs/printf/${OS_FOLDER}/printf.a -o ${NAME}
 
 ${CHECK}: ${CHECK_OBJS} 
-	@${CC} ${CFLAGS} ${CHECK_OBJS} ./libft/${OS_FOLDER}/libft.a ./printf/${OS_FOLDER}/printf.a -o ${CHECK}
+	@${CC} ${CFLAGS} ${CHECK_OBJS} ./my_libs/libft/${OS_FOLDER}/libft.a ./my_libs/printf/${OS_FOLDER}/printf.a -o ${CHECK}
 
 clean: 
 	@${RM} ${OBJS}

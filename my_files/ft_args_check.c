@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_args.c                                    :+:      :+:    :+:   */
+/*   ft_args_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2024/01/10 16:50:23 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:17:31 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ void	ft_args_check(int argc, char **argv, t_array_int *arg_num)
 	int			check;
 
 	temp_args = ft_args_split(argc, argv);
+	// if (!temp_args)
+	// 	exit (0);
 	check = ft_args_to_num(temp_args, arg_num);
 	ft_free_array_str(temp_args);
 	if (!check)
