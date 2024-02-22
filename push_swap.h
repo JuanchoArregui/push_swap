@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/21 14:45:14 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:16:02 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,26 @@ void	ft_stack_free(t_stack **stack_ptr);
 int		ft_stack_size(t_stack *stack);
 void	ft_stack_print(t_stack *head, const char *mode);
 void	ft_stacks_print(t_stack *stack_a, t_stack *stack_b);
+
+// Stack Operations
+int		ft_swap(t_stack **stack_ptr);
+int		sa(t_stack **stack_a);
+int		sb(t_stack **stack_b);
+int		ss(t_stack **stack_a, t_stack **stack_b);
+
+int		ft_push(t_stack **stack_a, t_stack **stack_b);
+int		pa(t_stack **stack_a, t_stack **stack_b);
+int		pb(t_stack **stack_b, t_stack **stack_a);
+
+int		ft_rotate(t_stack **stack_ptr);
+int		ra(t_stack **stack_a);
+int		rb(t_stack **stack_a);
+int		rr(t_stack **stack_a, t_stack **stack_b);
+
+int		ft_reverse_rotate(t_stack **stack_ptr);
+int		rra(t_stack **stack_a);
+int		rrb(t_stack **stack_a);
+int		rrr(t_stack **stack_a, t_stack **stack_b);
 
 // // Custom Functions from libft but adapted to new struct t_stack_node
 // t_stack_node	*ft_lstnew(int value);

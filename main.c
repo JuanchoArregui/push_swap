@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/21 14:58:41 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:17:52 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,31 @@ int	main(int argc, char **argv)
 	
 
 
+	sa(&stack_a);
+	ft_stacks_print(stack_a, stack_b);
 
+	pa(&stack_a, &stack_b);
+	pa(&stack_a, &stack_b);
+	pa(&stack_a, &stack_b);
+	pa(&stack_a, &stack_b);
+	ft_stacks_print(stack_a, stack_b);
+
+	rb(&stack_b);
+	ft_stacks_print(stack_a, stack_b);
+
+	rra(&stack_a);
+	ft_stacks_print(stack_a, stack_b);
 
 
 	return (0);
 }
 
 
-/////   NOTA
-// Falta vr el segmentation que me da el array de números
+// POR HACER
+// Implementar las funciones permitadas de swap, push etc.
+// probar e imprimir los satcks para ver que funcionan.
 
-//ESTOY A MEDIAS CON LA ESTRUCTURA DE ARRAY DE ENTEROS. CHECAR TODAS LAS FUNCIONES
-
-
-// LEAKS: AL LIBERAR TEMP_ARGS FALTA LIBERAR CADA MALLOC DE CADA ELEMNTO DEL ARRAY
-// Y CHECAR LOS DUPLICADOSSSSSSSSSS!!!!!!!
+// Implementar algoritmo de ordenación.
 
 
 
