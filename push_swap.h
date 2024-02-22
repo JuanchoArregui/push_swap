@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 16:16:02 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:42:58 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ int		ft_reverse_rotate(t_stack **stack_ptr);
 int		rra(t_stack **stack_a);
 int		rrb(t_stack **stack_a);
 int		rrr(t_stack **stack_a, t_stack **stack_b);
+
+// Functions for STACK SORTING
+int		ft_stack_sort(t_stack **stack_a, t_stack **stack_b);
 
 // // Custom Functions from libft but adapted to new struct t_stack_node
 // t_stack_node	*ft_lstnew(int value);

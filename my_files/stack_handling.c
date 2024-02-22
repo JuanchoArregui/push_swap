@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 16:04:57 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:49:45 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,9 @@ int	ft_stack_is_sorted(t_stack *st_head)
 	while (st_next && st_next->next)
 	{
 		if (st_next->value > st_next->next->value)
-		{
-			ft_printf("\nSTACK NOT SORTED");
 			return (0);
-		}
 		st_next = st_next->next;
 	}
-	ft_printf("\nStack is sorted!!!");
 	return (1);
 }
 

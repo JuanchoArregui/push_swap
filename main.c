@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 16:17:52 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/02/22 20:07:10 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ int	main(int argc, char **argv)
 	t_stack		*stack_a;
 	t_stack		*stack_b;
 
+
 	stack_a = NULL;
 	stack_b = NULL;
 	arg_num.length = 0;
 	arg_num.array_int = NULL;
+	
+		ft_printf("\n address stack_b p: %p\n", &stack_b);
+		ft_printf("\n address stack_b p: %p\n", stack_b);
 
 	ft_printf("\nargc: %d", argc);
 	ft_printf("\nArray of arguments argv:\n");
@@ -40,6 +44,8 @@ int	main(int argc, char **argv)
 	stack_a = ft_stack_init(&arg_num);
 
 	ft_stacks_print(stack_a, stack_b);
+	ft_stack_sort(&stack_a, &stack_b);
+	ft_stacks_print(stack_a, stack_b);
 
 
 	// ft_stack_is_sorted(stack_a);
@@ -53,20 +59,7 @@ int	main(int argc, char **argv)
 	
 
 
-	sa(&stack_a);
-	ft_stacks_print(stack_a, stack_b);
 
-	pa(&stack_a, &stack_b);
-	pa(&stack_a, &stack_b);
-	pa(&stack_a, &stack_b);
-	pa(&stack_a, &stack_b);
-	ft_stacks_print(stack_a, stack_b);
-
-	rb(&stack_b);
-	ft_stacks_print(stack_a, stack_b);
-
-	rra(&stack_a);
-	ft_stacks_print(stack_a, stack_b);
 
 
 	return (0);
