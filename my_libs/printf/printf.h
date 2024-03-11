@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:03:18 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/12 12:25:48 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/11 18:39:09 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int			ft_strcpy(const char *src, char *dst, size_t dst_start);
 int			ft_strcpy_size(const char *src, char *dst, size_t size);
 int			ft_strcmp(const char *str1, const char *str2);
 int			ft_strcmp_size(const char *str1, const char *str2, size_t size);
-size_t		ft_strlcpy(char *dst, const char *src, size_t size);
+size_t		ft_strlncpy(char *dst, const char *src, size_t size);
 /* ---------- /tests/fts_tests_a.c Tests */
 char		*ft_long_str(char *res);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/11 15:17:50 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/11 18:42:03 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,7 @@ int	main(int argc, char **argv)
 //Me falta hacer un función de sort 3
 //otra de sorte 3 reverse
 //Y checar la lógica de ft_stack_divide_conquer para asegurar que no hay bucle infinito
+
+
+//Corregir ft_strlncpy cabeceras en printf
+// Y modificar ejecutable printf para mac

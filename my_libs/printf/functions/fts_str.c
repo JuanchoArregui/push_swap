@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:21:11 by jarregui          #+#    #+#             */
-/*   Updated: 2023/12/14 12:48:06 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/11 18:35:47 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_strcmp_size(const char *str1, const char *str2, size_t size)
 	return (0);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlncpy(char *dst, const char *src, size_t size)
 {
 	size_t	length;
 	size_t	i;
