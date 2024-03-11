@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 20:07:10 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:17:50 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,60 +43,25 @@ int	main(int argc, char **argv)
 
 	stack_a = ft_stack_init(&arg_num);
 
-	ft_stacks_print(stack_a, stack_b);
-	ft_stack_sort(&stack_a, &stack_b);
-	ft_stacks_print(stack_a, stack_b);
-
-
-	// ft_stack_is_sorted(stack_a);
-	// if (ft_stack_is_sorted(stack_a))
-	// {
-		// ft_stack_free(&stack_a);
-		// ft_stack_free(&stack_b);
-	// 	return (0);
-	// }
-
 	
+	ft_printf("STACKS AL INICIO:\n");
+	ft_stacks_print(stack_a, stack_b);
+
+
+	ft_stack_sort(&stack_a, &stack_b);
+	
+	ft_printf("STACKS AL FINALIZAR:\n");
+	ft_stacks_print(stack_a, stack_b);
 
 
 
 
+
+// 5 1 9 8 99 88 77 666 65 -33 -34443 -343 -333 9999999 0 6636 -223 
 
 	return (0);
 }
 
-
-// POR HACER
-// Implementar las funciones permitadas de swap, push etc.
-// probar e imprimir los satcks para ver que funcionan.
-
-// Implementar algoritmo de ordenación.
-
-
-
-
-// int	main(int argc, char **argv)
-// {
-// 	t_stack_node	**stack_a;
-// 	t_stack_node	**stack_b;
-
-// 	if (argc < 2)
-// 		return (-1);
-// 	ft_args_check;(argc, argv);
-	// stack_a = (t_stack_node **)malloc(sizeof(t_stack_node));
-	// stack_b = (t_stack_node **)malloc(sizeof(t_stack_node));
-	// *stack_a = NULL;
-	// *stack_b = NULL;
-	// ft_stack_init(stack_a, argc, argv);
-	// if (is_sorted(stack_a))
-	// {
-	// 	free_stack(stack_a);
-	// 	free_stack(stack_b);
-	// 	return (0);
-	// }
-	// ft_stack_sort(stack_a, stack_b);
-	// free_stack(stack_a);
-	// free_stack(stack_b);
-// 	return (0);
-// }
-
+//Me falta hacer un función de sort 3
+//otra de sorte 3 reverse
+//Y checar la lógica de ft_stack_divide_conquer para asegurar que no hay bucle infinito

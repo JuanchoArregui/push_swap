@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 18:42:58 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:50:40 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,19 @@ void	ft_print_array_str(char **array);
 void	ft_print_t_array_int(t_array_int *arg_num);
 void	ft_free_array_str(char **temp_args);
 
-// Functions for STACKS handling
+// Functions for STACKS init
 t_stack	*ft_stack_init(t_array_int *arg_num);
 t_stack	*ft_stack_elem_new(int value, t_stack	*next);
-int		ft_stack_is_sorted(t_stack *st_head);
 void	ft_stack_free(t_stack **stack_ptr);
 
-// Functions for STACKS printing
+// Functions for STACKS handling
 int		ft_stack_size(t_stack *stack);
+int		ft_stack_half(t_stack *stack);
+int		ft_stack_get_pivot(t_stack **stack);
+int		ft_stack_is_sorted(t_stack *st_head);
+int		ft_stack_is_reverse_sorted(t_stack *st_head);
+
+// Functions for STACKS printing
 void	ft_stack_print(t_stack *head, const char *mode);
 void	ft_stacks_print(t_stack *stack_a, t_stack *stack_b);
 
@@ -79,45 +84,10 @@ int		rrr(t_stack **stack_a, t_stack **stack_b);
 
 // Functions for STACK SORTING
 int		ft_stack_sort(t_stack **stack_a, t_stack **stack_b);
-
-// // Custom Functions from libft but adapted to new struct t_stack_node
-// t_stack_node	*ft_lstnew(int value);
-// t_stack_node	*ft_lstlast(t_stack_node *head);
-// void	ft_lstadd_front(t_stack_node **stack, t_stack_node *new);
-// void	ft_lstadd_back(t_stack_node **stack, t_stack_node *new);
-// void	printList(t_stack_node *head);
-// int		ft_lstsize(t_stack_node *head);
-
-// // Util functions 
-// int		is_sorted(t_stack_node **stack);
-// int		get_distance(t_stack_node **stack, int index);
-// void	make_top(t_stack_node **stack, int distance);
-// void	free_stack(t_stack_node **stack);
-// void	ft_free(char **str);
-
-// // Algorithm utils
-// void	radix_sort(t_stack_node **stack_a, t_stack_node **stack_b);
-// void	simple_sort(t_stack_node **stack_a, t_stack_node **stack_b);
-// void	index_stack(t_stack_node **stack);
-// void	sort_5(t_stack_node **stack_a, t_stack_node **stack_b);
-
-// // Instruction functions
-// int		swap(t_stack_node **stack);
-// int		push(t_stack_node **stack_to, t_stack_node **stack_from);
-// int		rotate(t_stack_node **stack);
-// int		reverseRotate(t_stack_node **stack);
-
-// int		sa(t_stack_node **stack_a);
-// int		sb(t_stack_node **stack_b);
-// int		ss(t_stack_node **stack_a, t_stack_node **stack_b);
-// int		pa(t_stack_node **stack_a, t_stack_node **stack_b);
-// int		pb(t_stack_node **stack_b, t_stack_node **stack_a);
-// int		ra(t_stack_node **stack_a);
-// int		rb(t_stack_node **stack_b);
-// int		rr(t_stack_node **stack_a, t_stack_node **stack_b);
-// int		rra(t_stack_node **stack_a);
-// int		rrb(t_stack_node **stack_b);
-// int		rrr(t_stack_node **stack_a, t_stack_node **stack_b);
+int		ft_stack_sort_three(t_stack **stack_a);
+void	divide_a(t_stack **stack_a, t_stack **stack_b);
+void	divide_b(t_stack **stack_a, t_stack **stack_b);
+void	ft_stack_divide_conquer(t_stack **stack_a, t_stack **stack_b);
 
 #endif
 

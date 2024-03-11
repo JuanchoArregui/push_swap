@@ -6,34 +6,63 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 18:49:45 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/11 14:54:40 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*ft_stack_init(t_array_int *arg_num)
+int	ft_stack_size(t_stack *stack)
 {
-	int		i;
-	t_stack	*next;
+	int	len;
 
-	i = arg_num->length - 1;
-	next = NULL;
-	while (i >= 0)
-		next = ft_stack_elem_new(arg_num->array_int[i--], next);
-	return (next);
+	len = 0;
+	while (stack)
+	{
+		len ++;
+		stack = stack->next;
+	}
+	return (len);
 }
 
-t_stack	*ft_stack_elem_new(int value, t_stack	*next)
+int	ft_stack_half(t_stack *stack)
 {
-	t_stack	*stack_elem;
+	int	len;
+	int	half;
+	int	rest;
 
-	stack_elem = malloc(sizeof(t_stack));
-	if (!stack_elem)
-		return (NULL);
-	stack_elem->value = value;
-	stack_elem->next = next;
-	return (stack_elem);
+	len = ft_stack_size(stack);
+	rest = len % 2;
+	half = ft_stack_size(stack) / 2;
+	if (rest == 0)
+		return (half - 1);
+	return (half);
+}
+
+int	ft_stack_get_pivot(t_stack **stack)
+{
+	int		smaller;
+	int		half;
+	t_stack	*current;
+	t_stack	*temp;
+
+	half = ft_stack_half(*stack);
+	current = *stack;
+	while (current)
+	{
+		smaller = 0;
+		temp = *stack;
+		while (temp)
+		{
+			if (temp->value > current->value)
+				smaller++;
+			temp = temp->next;
+		}
+		if (smaller == half)
+			break ;
+		current = current->next;
+	}
+	return (current->value);
 }
 
 int	ft_stack_is_sorted(t_stack *st_head)
@@ -50,19 +79,17 @@ int	ft_stack_is_sorted(t_stack *st_head)
 	return (1);
 }
 
-void	ft_stack_free(t_stack **stack_ptr)
+
+int	ft_stack_is_reverse_sorted(t_stack *st_head)
 {
-	t_stack	*st_current;
 	t_stack	*st_next;
 
-	st_next = NULL;
-	st_current = *stack_ptr;
-	*stack_ptr = NULL;
-	while (st_current)
+	st_next = st_head;
+	while (st_next && st_next->next)
 	{
-		st_next = st_current->next;
-		free(st_current);
-		st_current = st_next;
+		if (st_next->value < st_next->next->value)
+			return (0);
+		st_next = st_next->next;
 	}
+	return (1);
 }
-

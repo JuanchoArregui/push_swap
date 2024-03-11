@@ -6,25 +6,12 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 15:59:12 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:16:47 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../push_swap.h"
-
-int	ft_stack_size(t_stack *stack)
-{
-	int	len;
-
-	len = 0;
-	while (stack)
-	{
-		len ++;
-		stack = stack->next;
-	}
-	return (len);
-}
 
 void	ft_stacks_print(t_stack *stack_a, t_stack *stack_b)
 {
