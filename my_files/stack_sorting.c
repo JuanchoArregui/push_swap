@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_sorting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:21 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/11 15:15:57 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/11 18:23:08 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	ft_stack_sort(t_stack **stack_a, t_stack **stack_b)
 
 void	divide_a(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*current;
 	int		half;
 	int		pivot;
 	int		counter;
@@ -76,8 +75,6 @@ void	divide_a(t_stack **stack_a, t_stack **stack_b)
 	half = ft_stack_half(*stack_a);
 	pivot = ft_stack_get_pivot(stack_a);
 	counter = 0;
-
-	current = *stack_a;
 	while (counter < half)
 	{
 		if ((*stack_a)->value <= pivot)
@@ -94,7 +91,6 @@ void	divide_a(t_stack **stack_a, t_stack **stack_b)
 
 void	divide_b(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*current;
 	int		half;
 	int		pivot;
 	int		counter;
@@ -102,8 +98,6 @@ void	divide_b(t_stack **stack_a, t_stack **stack_b)
 	half = ft_stack_half(*stack_b);
 	pivot = ft_stack_get_pivot(stack_b);
 	counter = 0;
-
-	current = *stack_a;
 	while (counter < half)
 	{
 		if ((*stack_b)->value <= pivot)
