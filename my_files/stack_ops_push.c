@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 00:34:28 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/13 16:23:56 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	pa(t_stack **stack_a, t_stack **stack_b)
 	res_a = ft_push(stack_a, stack_b);
 	if (!res_a)
 		return (0);
-	ft_printf("pa\n");
+	ft_printf("pb\n");
 	return (1);
 }
 
@@ -43,6 +43,6 @@ int	pb(t_stack **stack_a, t_stack **stack_b)
 	res_b = ft_push(stack_b, stack_a);
 	if (!res_b)
 		return (0);
-	ft_printf("pb\n");
+	ft_printf("pa\n");
 	return (1);
 }

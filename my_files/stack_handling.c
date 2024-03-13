@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 00:16:05 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/13 17:41:22 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,21 @@ int	ft_stack_size(t_stack *stack)
 		stack = stack->next;
 	}
 	return (len);
+}
+
+int	ft_value_last(t_stack **stk)
+{
+	t_stack	*current;
+	int		value_last;
+
+	if (!*stk)
+		return (0);
+	current = *stk;
+	while (current){
+		value_last = current->value;
+		current = current->next;
+	}
+	return (value_last);
 }
 
 int	ft_stack_get_pivot(t_stack **stack, int half)

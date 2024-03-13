@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:21 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 00:32:26 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/13 17:39:54 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,26 @@ void	divide_a(t_stack **stack_a, t_stack **stack_b)
 		if ((*stack_a)->value <= pivot)
 		{
 			pa(stack_a, stack_b);
+			if (*stack_b && (*stack_b)->value < ft_value_last(stack_b) && *stack_a && (*stack_a)->value > ft_value_last(stack_a))
+				rr(stack_a, stack_b);
+			else if (*stack_b && (*stack_b)->value < ft_value_last(stack_b))
+				rb(stack_b);
+			else if (*stack_b && (*stack_b)->next && (*stack_b)->value < (*stack_b)->next->value && *stack_a && (*stack_a)->next && (*stack_a)->value > (*stack_a)->next->value)
+				ss(stack_a, stack_b);
+			else if (*stack_b && (*stack_b)->next && (*stack_b)->value < (*stack_b)->next->value)
+				sb(stack_b);
 			counter++;
 		}
 		else
-			ra(stack_a);
+		{
+			ft_printf("\naquiiiii:\n");
+			
+			
+			if (*stack_b && (*stack_b)->value < ft_value_last(stack_b))
+				rr(stack_a, stack_b);
+			else
+				ra(stack_a);
+		}
 	}
 }
 
@@ -127,15 +143,23 @@ void	divide_b(t_stack **stack_a, t_stack **stack_b)
 		
 		if ((*stack_b)->value >= pivot)
 		{
-			ft_printf("\nen el bucle while PB");
 			pb(stack_a, stack_b);
+			if (*stack_a && (*stack_a)->value > ft_value_last(stack_a) && *stack_b && (*stack_b)->value < ft_value_last(stack_b))
+				rr(stack_a, stack_b);
+			else if (*stack_a && (*stack_a)->value > ft_value_last(stack_a))
+				ra(stack_a);
+			else if (*stack_a && (*stack_a)->next && (*stack_a)->value > (*stack_a)->next->value && *stack_b && (*stack_b)->next && (*stack_b)->value < (*stack_b)->next->value)
+				ss(stack_a, stack_b);
+			else if (*stack_a && (*stack_a)->next && (*stack_a)->value > (*stack_a)->next->value)
+				sb(stack_b);
 			counter++;
 		}
 		else
 		{
-
-			rb(stack_b);
-			ft_printf("\nen el bucle while PB");
+			if (*stack_a && (*stack_a)->value > ft_value_last(stack_a))
+				rr(stack_a, stack_b);
+			else
+				rb(stack_b);
 		}
 	}
 }
@@ -147,11 +171,9 @@ char	ft_divide_conquer(t_stack **stack_a, t_stack **stack_b, char last)
 
 	len_a = ft_stack_size(*stack_a);
 	len_b = ft_stack_size(*stack_b);
-	ft_printf("\nlen_a: %d\n", len_a);
-	ft_printf("\nlen_b: %d\n", len_b);
-	ft_printf("\nlast: %c\n", last);
+	ft_printf("\nlen_a: %d   len_b: %d  last: '%c'\n", len_a, len_b, last);
 
-	if (!last || (last == 'a' && *stack_a))
+	if (!last || (last == 'a' && *stack_a) || (*stack_a && !*stack_b))
 		return (divide_a(stack_a, stack_b), 'a');
 	else if (!*stack_a || (last == 'b' && *stack_b))
 		return (divide_b(stack_a, stack_b), 'b');
@@ -163,8 +185,9 @@ char	ft_divide_conquer(t_stack **stack_a, t_stack **stack_b, char last)
 	// 	ft_stack_sort_three_reversed(stack_b);
 	// else if (*stack_b && !ft_stack_is_reverse_sorted(*stack_b) && len_b > 3)
 	// 	divide_b(stack_a, stack_b);
-	// else if (*stack_a && ft_stack_is_sorted(*stack_a) && *stack_b && !ft_stack_is_reverse_sorted(*stack_b))
-	// 	dump_b(stack_a, stack_b);
+
+	else if (*stack_a && ft_stack_is_sorted(*stack_a) && *stack_b && ft_stack_is_reverse_sorted(*stack_b) && (*stack_a)->value > (*stack_b)->value)
+		return (dump_b(stack_a, stack_b), 0);
 	else
 	{
 		ft_printf("\nCHECAR ESTO AQUI NO DEBERIA LLEGAR CREO\n");

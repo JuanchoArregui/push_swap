@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 00:16:22 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/13 16:59:39 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ft_stack_free(t_stack **stack_ptr);
 
 // Functions for STACKS handling
 int		ft_stack_size(t_stack *stack);
+int		ft_value_last(t_stack **stk);
 int		ft_stack_get_pivot(t_stack **stack, int half);
 int		ft_stack_is_sorted(t_stack *st_head);
 int		ft_stack_is_reverse_sorted(t_stack *st_head);
