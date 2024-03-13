@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_ops_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 16:12:15 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/13 00:36:16 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 int	ft_rotate(t_stack **stack_ptr)
 {
-	t_stack	*last;
+    t_stack	*last;
+    t_stack *first;
 
-	if (*stack_ptr == NULL || (*stack_ptr)->next == NULL)
-		return (0);
-	last = *stack_ptr;
-	while (last->next != NULL)
-		last = last->next;
-	last->next = *stack_ptr;
-	*stack_ptr = (*stack_ptr)->next;
-	last->next->next = NULL;
-	return (1);
+    if (*stack_ptr == NULL || (*stack_ptr)->next == NULL)
+        return (0);
+    first = *stack_ptr;
+    last = *stack_ptr;
+    while (last->next != NULL)
+        last = last->next;
+    *stack_ptr = (*stack_ptr)->next;
+    last->next = first;
+    first->next = NULL;
+    return (1);
 }
 
 int	ra(t_stack **stack_a)
@@ -38,11 +40,11 @@ int	ra(t_stack **stack_a)
 	return (1);
 }
 
-int	rb(t_stack **stack_a)
+int	rb(t_stack **stack_b)
 {
 	int	res_b;
 
-	res_b = ft_rotate(stack_a);
+	res_b = ft_rotate(stack_b);
 	if (!res_b)
 		return (0);
 	ft_printf("rb\n");

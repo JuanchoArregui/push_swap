@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/11 12:23:20 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/12 21:58:27 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ t_stack	*ft_stack_init(t_array_int *arg_num)
 	next = NULL;
 	while (i >= 0)
 		next = ft_stack_elem_new(arg_num->array_int[i--], next);
+	if (arg_num->array_int != NULL)
+	{
+		free(arg_num->array_int);
+		arg_num->array_int = NULL;
+	}
 	return (next);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_ops_reverse_rotate.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 16:16:03 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/13 00:35:08 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 int	ft_reverse_rotate(t_stack **stack_ptr)
 {
 	t_stack	*last;
-	t_stack	*second_last;
+	t_stack	*penultimate;
 
 	if (*stack_ptr == NULL || (*stack_ptr)->next == NULL)
 		return (0);
-	second_last = *stack_ptr;
-	while (second_last->next->next != NULL)
-		second_last = second_last->next;
-	last = second_last->next;
-	second_last->next = NULL;
+	penultimate = *stack_ptr;
+	while (penultimate->next->next != NULL)
+		penultimate = penultimate->next;
+	last = penultimate->next;
+	penultimate->next = NULL;
 	last->next = *stack_ptr;
 	*stack_ptr = last;
 	return (1);
@@ -40,11 +40,11 @@ int	rra(t_stack **stack_a)
 	return (1);
 }
 
-int	rrb(t_stack **stack_a)
+int	rrb(t_stack **stack_b)
 {
 	int	res_b;
 
-	res_b = ft_reverse_rotate(stack_a);
+	res_b = ft_reverse_rotate(stack_b);
 	if (!res_b)
 		return (0);
 	ft_printf("rrb\n");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/11 14:50:40 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/13 00:16:22 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ void	ft_stack_free(t_stack **stack_ptr);
 
 // Functions for STACKS handling
 int		ft_stack_size(t_stack *stack);
-int		ft_stack_half(t_stack *stack);
-int		ft_stack_get_pivot(t_stack **stack);
+int		ft_stack_get_pivot(t_stack **stack, int half);
 int		ft_stack_is_sorted(t_stack *st_head);
 int		ft_stack_is_reverse_sorted(t_stack *st_head);
 
@@ -82,12 +81,19 @@ int		rra(t_stack **stack_a);
 int		rrb(t_stack **stack_a);
 int		rrr(t_stack **stack_a, t_stack **stack_b);
 
+int		rasa(t_stack **stack_a);
+int		sara(t_stack **stack_a);
+int		rbsb(t_stack **stack_b);
+int		sbrb(t_stack **stack_b);
+void	dump_b(t_stack **stack_a, t_stack **stack_b);
+
 // Functions for STACK SORTING
-int		ft_stack_sort(t_stack **stack_a, t_stack **stack_b);
-int		ft_stack_sort_three(t_stack **stack_a);
+int		ft_stack_sort(t_stack **stack_a, t_stack **stack_b, char last);
+int		ft_stack_sort_three(t_stack **stk);
+int		ft_stack_sort_three_reversed(t_stack **stk);
 void	divide_a(t_stack **stack_a, t_stack **stack_b);
 void	divide_b(t_stack **stack_a, t_stack **stack_b);
-void	ft_stack_divide_conquer(t_stack **stack_a, t_stack **stack_b);
+char	ft_divide_conquer(t_stack **stack_a, t_stack **stack_b, char last);
 
 #endif
 

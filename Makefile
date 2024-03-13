@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+         #
+#    By: juancho <juancho@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2024/02/08 16:47:59 by jarregui         ###   ########.fr        #
+#    Updated: 2024/03/12 22:06:36 by juancho          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,14 @@ OBJS = ${SRCS:.c=.o}
 CHECK_OBJS = ${CHECK_SRCS:.c=.o}
 
 CC = gcc
-# CFLAGS = -Wall -Wextra -Werror -Iincludes
 # CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+
+# use this for debugging:
+# CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+
+# use this for memmory leaks:
+CFLAGS = -Wall -Wextra -Werror -g
+# valgrind --leak-check=full ./push_swap 3 2 1 9 5 4 8 7 6
 
 RM = rm -rf
 

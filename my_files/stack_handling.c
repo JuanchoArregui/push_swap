@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/11 14:54:40 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/13 00:16:05 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,12 @@ int	ft_stack_size(t_stack *stack)
 	return (len);
 }
 
-int	ft_stack_half(t_stack *stack)
-{
-	int	len;
-	int	half;
-	int	rest;
-
-	len = ft_stack_size(stack);
-	rest = len % 2;
-	half = ft_stack_size(stack) / 2;
-	if (rest == 0)
-		return (half - 1);
-	return (half);
-}
-
-int	ft_stack_get_pivot(t_stack **stack)
+int	ft_stack_get_pivot(t_stack **stack, int half)
 {
 	int		smaller;
-	int		half;
 	t_stack	*current;
 	t_stack	*temp;
 
-	half = ft_stack_half(*stack);
 	current = *stack;
 	while (current)
 	{
@@ -65,11 +49,11 @@ int	ft_stack_get_pivot(t_stack **stack)
 	return (current->value);
 }
 
-int	ft_stack_is_sorted(t_stack *st_head)
+int	ft_stack_is_sorted(t_stack *stk)
 {
 	t_stack	*st_next;
 
-	st_next = st_head;
+	st_next = stk;
 	while (st_next && st_next->next)
 	{
 		if (st_next->value > st_next->next->value)
@@ -80,11 +64,11 @@ int	ft_stack_is_sorted(t_stack *st_head)
 }
 
 
-int	ft_stack_is_reverse_sorted(t_stack *st_head)
+int	ft_stack_is_reverse_sorted(t_stack *stk)
 {
 	t_stack	*st_next;
 
-	st_next = st_head;
+	st_next = stk;
 	while (st_next && st_next->next)
 	{
 		if (st_next->value < st_next->next->value)

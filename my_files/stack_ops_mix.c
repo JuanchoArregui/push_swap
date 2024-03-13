@@ -1,48 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_ops_push.c                                   :+:      :+:    :+:   */
+/*   stack_ops_mix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 00:34:28 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/12 23:02:50 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_push(t_stack **stack_a, t_stack **stack_b)
+int	rasa(t_stack **stack_a)
 {
-	t_stack	*temp;
-
-	if (*stack_a == NULL)
-		return (0);
-	temp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	temp->next = *stack_b;
-	*stack_b = temp;
+	ra(stack_a);
+	sa(stack_a);
 	return (1);
 }
 
-int	pa(t_stack **stack_a, t_stack **stack_b)
+int	sara(t_stack **stack_a)
 {
-	int	res_a;
-
-	res_a = ft_push(stack_a, stack_b);
-	if (!res_a)
-		return (0);
-	ft_printf("pa\n");
+	sa(stack_a);
+	ra(stack_a);
 	return (1);
 }
 
-int	pb(t_stack **stack_a, t_stack **stack_b)
+int	rbsb(t_stack **stack_b)
 {
-	int	res_b;
-
-	res_b = ft_push(stack_b, stack_a);
-	if (!res_b)
-		return (0);
-	ft_printf("pb\n");
+	rb(stack_b);
+	sb(stack_b);
 	return (1);
+}
+
+int	sbrb(t_stack **stack_b)
+{
+	sb(stack_b);
+	rb(stack_b);
+	return (1);
+}
+
+void	dump_b(t_stack **stack_a, t_stack **stack_b)
+{
+	while (stack_b)
+	{
+		pb(stack_a, stack_b);
+	}
 }

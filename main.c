@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/11 18:42:03 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/12 23:59:01 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,11 @@ int	main(int argc, char **argv)
 	stack_a = ft_stack_init(&arg_num);
 
 	
-	ft_printf("STACKS AL INICIO:\n");
-	ft_stacks_print(stack_a, stack_b);
+	// ft_printf("STACKS AL INICIO:\n");
+	// ft_stacks_print(stack_a, stack_b);
 
 
-	ft_stack_sort(&stack_a, &stack_b);
-	
-	ft_printf("STACKS AL FINALIZAR:\n");
-	ft_stacks_print(stack_a, stack_b);
-
-
-
-
-
-// 5 1 9 8 99 88 77 666 65 -33 -34443 -343 -333 9999999 0 6636 -223 
+	ft_stack_sort(&stack_a, &stack_b, 0);
 
 	return (0);
 }
@@ -69,3 +60,6 @@ int	main(int argc, char **argv)
 
 //Corregir ft_strlncpy cabeceras en printf
 // Y modificar ejecutable printf para mac
+
+
+// 5 1 9 8 99 88 77 666 65 -33 -34443 -343 -333 9999999 0 6636 -223 
