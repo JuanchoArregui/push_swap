@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:21 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 18:03:54 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/13 22:37:11 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	ft_stack_sort(t_stack **stack_a, t_stack **stack_b, char last)
 {
 	if (ft_stack_is_sorted(*stack_a) && *stack_b == NULL)
 	{
-		ft_printf("\nORDENADO\n");
 		ft_printf("\nSTACKS ORDENADOS AL FINALIZAR:");
 		ft_stacks_print(*stack_a, *stack_b);
 		
@@ -79,6 +78,7 @@ int	ft_stack_sort(t_stack **stack_a, t_stack **stack_b, char last)
 	else
 	{
 		ft_stacks_print(*stack_a, *stack_b);
+		
 		last = ft_divide_conquer(stack_a, stack_b, last);
 	}
 	ft_stack_sort(stack_a, stack_b, last);
@@ -167,28 +167,21 @@ char	ft_divide_conquer(t_stack **stack_a, t_stack **stack_b, char last)
 	len_a = ft_stack_size(*stack_a);
 	len_b = ft_stack_size(*stack_b);
 	if (*stack_a && len_a <= 3 && !ft_stack_is_sorted(*stack_a))
-		ft_stack_sort_three(stack_a);
+		return (ft_stack_sort_three(stack_a), 0);
 	else if (!last || (last == 'a' && *stack_a) || (*stack_a && !*stack_b))
 		return (divide_a(stack_a, stack_b), 'a');
 	else if (*stack_b && len_b <= 3 && !ft_stack_is_reverse_sorted(*stack_b))
-		ft_stack_sort_three_reversed(stack_b);
+		return (ft_stack_sort_three_reversed(stack_b), 0);
 	else if (!*stack_a || (last == 'b' && *stack_b))
 		return (divide_b(stack_a, stack_b), 'b');
-
-	// else if (*stack_a && !ft_stack_is_sorted(*stack_a) && len_a > 3)
-	// 	divide_a(stack_a, stack_b);
-
-	// else if (*stack_b && !ft_stack_is_reverse_sorted(*stack_b) && len_b > 3)
-	// 	divide_b(stack_a, stack_b);
-
 	else if (*stack_a && ft_stack_is_sorted(*stack_a) && *stack_b && ft_stack_is_reverse_sorted(*stack_b) && (*stack_a)->value > (*stack_b)->value)
 		return (dump_b(stack_a, stack_b), 0);
+
 	else
 	{
 		ft_printf("\nCHECAR ESTO AQUI NO DEBERIA LLEGAR CREO\n");
 		ft_stacks_print(*stack_a, *stack_b);
 		return (0);
 	}
-
 }
 

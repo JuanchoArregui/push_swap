@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 16:14:38 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/13 22:33:47 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,6 @@ char	**ft_args_split(int argc, char **argv)
 		}
 		temp_args[i-1] = 0;
 	}
-
-
-
-
-
-
-	ft_printf("Splited array of strings: \n");
-	ft_print_array_str(temp_args);
-	ft_printf("\n");
 	return (temp_args);
 }
 
