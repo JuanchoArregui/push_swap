@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 16:59:39 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/13 23:16:23 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_stuff
+{
+	int				debug;
+	int				last_a_sorted;
+	char 			last_stk;
+	int				counter;
+}	t_stuff;
+
+
+
 // Functions for checking arguments. At ./args/ft_check_args.c
 int		ft_unique(int num_to_check, unsigned int n, t_array_int *arg_num);
 int		ft_arg_to_i(char **temp_args, unsigned int n, t_array_int *arg_num);
@@ -50,6 +60,7 @@ void	ft_free_array_str(char **temp_args);
 t_stack	*ft_stack_init(t_array_int *arg_num);
 t_stack	*ft_stack_elem_new(int value, t_stack	*next);
 void	ft_stack_free(t_stack **stack_ptr);
+void	ft_stuff_init(t_stuff	*stuff);
 
 // Functions for STACKS handling
 int		ft_stack_size(t_stack *stack);

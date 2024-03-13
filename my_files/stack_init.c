@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/12 21:58:27 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/13 23:17:49 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,13 @@ void	ft_stack_free(t_stack **stack_ptr)
 	}
 }
 
+void	ft_stuff_init(t_stuff	*stuff)
+{
+	if (stuff)
+	{
+		stuff->debug = 0;
+		stuff->last_a_sorted = 0;
+		stuff->last_stk = 'a';
+		stuff->counter = 0;
+	}
+}

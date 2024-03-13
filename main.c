@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 22:30:48 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/13 23:14:00 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_array_int	arg_num;
 	t_stack		*stack_a;
-	t_stack		*stack_b;
+	t_stack		*stack_b;	
+	t_stuff		stuff;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -26,6 +27,15 @@ int	main(int argc, char **argv)
 		return (-1);
 	ft_args_check(argc, argv, &arg_num);
 	stack_a = ft_stack_init(&arg_num);
+
+
+	ft_stuff_init(&stuff);
+	stuff.debug = 1;
+	ft_printf("\nstuff.debug: %d\n", stuff.debug);
+	ft_printf("\nstuff.counter: %d\n", stuff.counter);
+
+
+
 	ft_stack_sort(&stack_a, &stack_b, 0);
 
 	return (0);
