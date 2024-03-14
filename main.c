@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 23:14:00 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/14 14:25:43 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,24 @@
 int	main(int argc, char **argv)
 {
 	t_array_int	arg_num;
-	t_stack		*stack_a;
-	t_stack		*stack_b;	
-	t_stuff		stuff;
+	t_stks		stks;
 
-	stack_a = NULL;
-	stack_b = NULL;
 	arg_num.length = 0;
 	arg_num.array_int = NULL;
 	if (argc < 2)
 		return (-1);
 	ft_args_check(argc, argv, &arg_num);
-	stack_a = ft_stack_init(&arg_num);
+	ft_stks_init(&stks);
+	stks.a = ft_stk_init(&arg_num);
+	stks.debug = 1;
+
+ft_stks_print(&stks);
+	ra(&stks);
+	ra(&stks);
+	ft_stks_print(&stks);
 
 
-	ft_stuff_init(&stuff);
-	stuff.debug = 1;
-	ft_printf("\nstuff.debug: %d\n", stuff.debug);
-	ft_printf("\nstuff.counter: %d\n", stuff.counter);
-
-
-
-	ft_stack_sort(&stack_a, &stack_b, 0);
-
+	// ft_stks_sort(&stks);
 	return (0);
 }
 

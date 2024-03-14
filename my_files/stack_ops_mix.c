@@ -3,47 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   stack_ops_mix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/12 23:02:50 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/14 13:04:21 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	rasa(t_stack **stack_a)
+int	rasa(t_stks *stks)
 {
-	ra(stack_a);
-	sa(stack_a);
+	ra(stks);
+	sa(stks);
 	return (1);
 }
 
-int	sara(t_stack **stack_a)
+int	sara(t_stks *stks)
 {
-	sa(stack_a);
-	ra(stack_a);
+	sa(stks);
+	ra(stks);
 	return (1);
 }
 
-int	rbsb(t_stack **stack_b)
+int	rbsb(t_stks *stks)
 {
-	rb(stack_b);
-	sb(stack_b);
+	rb(stks);
+	sb(stks);
 	return (1);
 }
 
-int	sbrb(t_stack **stack_b)
+int	sbrb(t_stks *stks)
 {
-	sb(stack_b);
-	rb(stack_b);
+	sb(stks);
+	rb(stks);
 	return (1);
 }
 
-void	dump_b(t_stack **stack_a, t_stack **stack_b)
+void	dump_b(t_stks *stks)
 {
-	while (stack_b)
+	while (stks->b)
 	{
-		pb(stack_a, stack_b);
+		pb(stks);
 	}
 }

@@ -3,185 +3,224 @@
 /*                                                        :::      ::::::::   */
 /*   stack_sorting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:21 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 23:14:30 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/14 14:26:21 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_stack_sort_three(t_stack **stk)
+int	ft_stk_a_sort_three(t_stks *stks)
 {
 	int	len;
-	
-	len = ft_stack_size(*stk);
-	if (len == 2 && (*stk)->value > (*stk)->next->value)
-		sa(stk);
-	else if (len == 3 && (*stk)->value > (*stk)->next->value)
+
+	len = ft_stk_size(stks->a);
+	if (len == 2 && (stks->a)->value > (stks->a)->next->value)
+		sa(stks);
+	else if (len == 3 && (stks->a)->value > (stks->a)->next->value)
 	{
-		if ((*stk)->next->value > (*stk)->next->next->value)
-			rasa(stk);
-		else if ((*stk)->value > (*stk)->next->next->value)
-			ra(stk);
+		if ((stks->a)->next->value > (stks->a)->next->next->value)
+			rasa(stks);
+		else if ((stks->a)->value > (stks->a)->next->next->value)
+			ra(stks);
 		else
-			sa(stk);
+			sa(stks);
 	}
-	else if (len == 3 && (*stk)->next->value > (*stk)->next->next->value)
-	{	
-		if ((*stk)->value > (*stk)->next->next->value)
-			rra(stk);
+	else if (len == 3 && (stks->a)->next->value > (stks->a)->next->next->value)
+	{
+		if ((stks->a)->value > (stks->a)->next->next->value)
+			rra(stks);
 		else
-			sara(stk);
+			sara(stks);
 	}
 	return (1);
 }
 
-int	ft_stack_sort_three_reversed(t_stack **stk)
+int	ft_stk_b_sort_three_reversed(t_stks *stks)
 {
-    int	len;
-    
-    len = ft_stack_size(*stk);
-    if (len == 2 && (*stk)->value < (*stk)->next->value)
-        sb(stk);
-	else if (len == 3 && (*stk)->value < (*stk)->next->value)
+	int	len;
+
+	len = ft_stk_size(stks->b);
+	if (len == 2 && (stks->b)->value < (stks->b)->next->value)
+		sb(stks);
+	else if (len == 3 && (stks->b)->value < (stks->b)->next->value)
 	{
-		if ((*stk)->next->value < (*stk)->next->next->value)
-			rbsb(stk);
-		else if ((*stk)->value < (*stk)->next->next->value)
-			rb(stk);
+		if ((stks->b)->next->value < (stks->b)->next->next->value)
+			rbsb(stks);
+		else if ((stks->b)->value < (stks->b)->next->next->value)
+			rb(stks);
 		else
-			sb(stk);
+			sb(stks);
 	}
-	else if (len == 3 && (*stk)->next->value < (*stk)->next->next->value)
+	else if (len == 3 && (stks->b)->next->value < (stks->b)->next->next->value)
 	{
-		if ((*stk)->value < (*stk)->next->next->value)
-			rrb(stk);
+		if ((stks->b)->value < (stks->b)->next->next->value)
+			rrb(stks);
 		else
-			sbrb(stk);
+			sbrb(stks);
 	}
-    return (1);
+	return (1);
 }
 
-int	ft_stack_sort(t_stack **stack_a, t_stack **stack_b, char last)
+int	ft_stks_sort(t_stks *stks)
 {
-	if (ft_stack_is_sorted(*stack_a) && *stack_b == NULL)
+	if (ft_stk_a_is_sorted(stks->a) && stks->b == NULL)
 	{
-		ft_printf("\nSTACKS ORDENADOS AL FINALIZAR:");
-		ft_stacks_print(*stack_a, *stack_b);
-		
-		ft_stack_free(stack_a);
-		ft_stack_free(stack_b);
+		if (stks->debug)
+		{
+			ft_stks_print(stks);
+			ft_printf("Total operaciones efectuadas: %d", stks->counter);
+		}
+		ft_stk_free(stks->a);
+		ft_stk_free(stks->b);
 		return (1);
 	}
 	else
 	{
-		ft_stacks_print(*stack_a, *stack_b);
-		
-		last = ft_divide_conquer(stack_a, stack_b, last);
+		if (stks->debug)
+			ft_stks_print(stks);
+			
+		ft_divide_conquer(stks);
+		ft_printf("hemos terminado ft_divide_conquer");
+
 	}
-	ft_stack_sort(stack_a, stack_b, last);
+	ft_stks_sort(stks);
 	return (0);
 }
 
-void	divide_a(t_stack **stack_a, t_stack **stack_b)
+void	ft_divide_a(t_stks *stks)
 {
 	int		half;
 	int		pivot;
 	int		counter;
 
-	half = ft_stack_size(*stack_a) / 2;
-	pivot = ft_stack_get_pivot(stack_a, half);
+	half = ft_stk_size(stks->a) / 2;
+	pivot = ft_stk_get_pivot(stks->a, half);
 	counter = 0;
+
+
+	ft_printf("\ndentro de ft_divide_a half: %d  pivot: %d", half, pivot);
+	ft_printf("\n stks->a : %p", stks->a);
+	ft_printf("\n stks->b : %p", stks->b);
+	ft_printf("\n stks->debug : %d", stks->debug);
+	ft_printf("\n stks->last_stk : %c", stks->last_stk);
+	
+	
 	if (half == 0)
-		pa(stack_a, stack_b);
+		pa(stks);
 	while (counter < half)
 	{
-		if ((*stack_a)->value <= pivot)
-		{
-			pa(stack_a, stack_b);
-			if (*stack_b && (*stack_b)->value < ft_value_last(stack_b) && *stack_a && (*stack_a)->value > ft_value_last(stack_a))
-				rr(stack_a, stack_b);
-			else if (*stack_b && (*stack_b)->value < ft_value_last(stack_b))
-				rb(stack_b);
-			else if (*stack_b && (*stack_b)->next && (*stack_b)->value < (*stack_b)->next->value && *stack_a && (*stack_a)->next && (*stack_a)->value > (*stack_a)->next->value)
-				ss(stack_a, stack_b);
-			else if (*stack_b && (*stack_b)->next && (*stack_b)->value < (*stack_b)->next->value)
-				sb(stack_b);
-			counter++;
-		}
-		else
-		{
-			if (*stack_b && (*stack_b)->value < ft_value_last(stack_b))
-				rr(stack_a, stack_b);
-			else
-				ra(stack_a);
-		}
-	}
-}
-
-void	divide_b(t_stack **stack_a, t_stack **stack_b)
-{
-	int		half;
-	int		pivot;
-	int		counter;
-
-	half = ft_stack_size(*stack_b) / 2;
-	pivot = ft_stack_get_pivot(stack_b, half);
-	counter = 0;
-	ft_printf("\ndivide_B. length: %d  half: %d  pivot: %d\n", ft_stack_size(*stack_b), half, pivot);
-	if (half == 0)
-		pb(stack_a, stack_b);
-	while (counter < half)
-	{
+		ft_printf("\n en el while (stks->a)->value: %d", (stks->a)->value);
 		
-		if ((*stack_b)->value >= pivot)
+		if ((stks->a)->value <= pivot)
 		{
-			pb(stack_a, stack_b);
-			if (*stack_a && (*stack_a)->value > ft_value_last(stack_a) && *stack_b && (*stack_b)->value < ft_value_last(stack_b))
-				rr(stack_a, stack_b);
-			else if (*stack_a && (*stack_a)->value > ft_value_last(stack_a))
-				ra(stack_a);
-			else if (*stack_a && (*stack_a)->next && (*stack_a)->value > (*stack_a)->next->value && *stack_b && (*stack_b)->next && (*stack_b)->value < (*stack_b)->next->value)
-				ss(stack_a, stack_b);
-			else if (*stack_a && (*stack_a)->next && (*stack_a)->value > (*stack_a)->next->value)
-				sb(stack_b);
+			pa(stks);
+			if (stks->b && (stks->b)->value < ft_value_last(stks->b) && stks->a && (stks->a)->value > ft_value_last(stks->a))
+				rr(stks);
+			else if (stks->b && (stks->b)->value < ft_value_last(stks->b))
+				rb(stks);
+			else if (stks->b && (stks->b)->next && (stks->b)->value < (stks->b)->next->value && stks->a && (stks->a)->next && (stks->a)->value > (stks->a)->next->value)
+				ss(stks);
+			else if (stks->b && (stks->b)->next && (stks->b)->value < (stks->b)->next->value)
+				sb(stks);
 			counter++;
 		}
 		else
 		{
-			if (*stack_a && (*stack_a)->value > ft_value_last(stack_a))
-				rr(stack_a, stack_b);
+			if (stks->b && (stks->b)->value < ft_value_last(stks->b))
+				rr(stks);
 			else
-				rb(stack_b);
+				ra(stks);
 		}
 	}
 }
 
-char	ft_divide_conquer(t_stack **stack_a, t_stack **stack_b, char last)
+void	ft_divide_b(t_stks *stks)
+{
+	int		half;
+	int		pivot;
+	int		counter;
+
+	half = ft_stk_size(stks->b) / 2;
+	pivot = ft_stk_get_pivot(stks->b, half);
+	counter = 0;
+	ft_printf("\nft_divide_b. length: %d  half: %d  pivot: %d\n", ft_stk_size(stks->b), half, pivot);
+	if (half == 0)
+		pb(stks);
+	while (counter < half)
+	{
+		if ((stks->b)->value >= pivot)
+		{
+			pb(stks);
+			if (stks->a && (stks->a)->value > ft_value_last(stks->a) && stks->b && (stks->b)->value < ft_value_last(stks->b))
+				rr(stks);
+			else if (stks->a && (stks->a)->value > ft_value_last(stks->a))
+				ra(stks);
+			else if (stks->a && (stks->a)->next && (stks->a)->value > (stks->a)->next->value && stks->b && (stks->b)->next && (stks->b)->value < (stks->b)->next->value)
+				ss(stks);
+			else if (stks->a && (stks->a)->next && (stks->a)->value > (stks->a)->next->value)
+				sb(stks);
+			counter++;
+		}
+		else
+		{
+			if (stks->a && (stks->a)->value > ft_value_last(stks->a))
+				rr(stks);
+			else
+				rb(stks);
+		}
+	}
+}
+
+void	ft_divide_conquer(t_stks *stks)
 {
 	int		len_a;
 	int		len_b;
 
-	len_a = ft_stack_size(*stack_a);
-	len_b = ft_stack_size(*stack_b);
-	if (*stack_a && len_a <= 3 && !ft_stack_is_sorted(*stack_a))
-		return (ft_stack_sort_three(stack_a), 0);
-	else if (!last || (last == 'a' && *stack_a) || (*stack_a && !*stack_b))
-		return (divide_a(stack_a, stack_b), 'a');
-	else if (*stack_b && len_b <= 3 && !ft_stack_is_reverse_sorted(*stack_b))
-		return (ft_stack_sort_three_reversed(stack_b), 0);
-	else if (!*stack_a || (last == 'b' && *stack_b))
-		return (divide_b(stack_a, stack_b), 'b');
-	else if (*stack_a && ft_stack_is_sorted(*stack_a) && *stack_b && ft_stack_is_reverse_sorted(*stack_b) && (*stack_a)->value > (*stack_b)->value)
-		return (dump_b(stack_a, stack_b), 0);
+	len_a = ft_stk_size(stks->a);
+	len_b = ft_stk_size(stks->b);
 
+	ft_printf("\n\n entrando en divide and conquer");
+	ft_printf("\n stks->a : %p", stks->a);
+	ft_printf("\n stks->b : %p", stks->b);
+	ft_printf("\n stks->debug : %d", stks->debug);
+	ft_printf("\n stks->last_stk : %c", stks->last_stk);
+
+	if (stks->a && len_a <= 3 && !ft_stk_a_is_sorted(stks->a))
+	{
+		ft_printf("\n AAAAAAA");
+		ft_stk_a_sort_three(stks);
+		stks->last_stk = 0;
+	}
+	else if (!stks->last_stk || (stks->last_stk == 'a' && stks->a) || (stks->a && !stks->b))
+	{
+		ft_printf("\n BBBBB");
+		ft_divide_a(stks);
+		stks->last_stk = 'a';
+	}
+	else if (stks->b && len_b <= 3 && !ft_stk_b_is_reversed(stks->b))
+	{
+		ft_printf("\n CCCCC");
+		ft_stk_b_sort_three_reversed(stks);
+		stks->last_stk = 'b';
+	}
+	else if (!stks->a || (stks->last_stk == 'b' && stks->b))
+	{
+		ft_printf("\n DDDDD");
+		ft_divide_b(stks);
+		stks->last_stk = 'b';
+	}
+	else if (stks->a && ft_stk_a_is_sorted(stks->a) && stks->b && ft_stk_b_is_reversed(stks->b) && (stks->a)->value > (stks->b)->value)
+	{
+		ft_printf("\n EEEEE");
+		dump_b(stks);
+		stks->last_stk = 0;
+	}
 	else
 	{
 		ft_printf("\nCHECAR ESTO AQUI NO DEBERIA LLEGAR CREO\n");
-		ft_stacks_print(*stack_a, *stack_b);
-		return (0);
+		ft_stks_print(stks);
 	}
 }
-

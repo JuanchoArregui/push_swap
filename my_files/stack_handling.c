@@ -3,68 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   stack_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 17:41:22 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/14 13:15:14 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_stack_size(t_stack *stack)
+int	ft_stk_size(t_stack *stk)
 {
 	int	len;
 
 	len = 0;
-	while (stack)
+	while (stk)
 	{
 		len ++;
-		stack = stack->next;
+		stk = stk->next;
 	}
 	return (len);
 }
 
-int	ft_value_last(t_stack **stk)
+int	ft_value_last(t_stack *stk)
 {
-	t_stack	*current;
+	t_stack	*stk_current;
 	int		value_last;
 
-	if (!*stk)
+	if (!stk)
 		return (0);
-	current = *stk;
-	while (current){
-		value_last = current->value;
-		current = current->next;
+	stk_current = stk;
+	while (stk_current){
+		value_last = stk_current->value;
+		stk_current = stk_current->next;
 	}
 	return (value_last);
 }
 
-int	ft_stack_get_pivot(t_stack **stack, int half)
+int	ft_stk_get_pivot(t_stack *stk, int half)
 {
 	int		smaller;
-	t_stack	*current;
-	t_stack	*temp;
+	t_stack	*stk_current;
+	t_stack	*stk_temp;
 
-	current = *stack;
-	while (current)
+	stk_current = stk;
+	while (stk_current)
 	{
 		smaller = 0;
-		temp = *stack;
-		while (temp)
+		stk_temp = stk;
+		while (stk_temp)
 		{
-			if (temp->value > current->value)
+			if (stk_temp->value > stk_current->value)
 				smaller++;
-			temp = temp->next;
+			stk_temp = stk_temp->next;
 		}
 		if (smaller == half)
 			break ;
-		current = current->next;
+		stk_current = stk_current->next;
 	}
-	return (current->value);
+	return (stk_current->value);
 }
 
-int	ft_stack_is_sorted(t_stack *stk)
+int	ft_stk_a_is_sorted(t_stack *stk)
 {
 	t_stack	*st_next;
 
@@ -79,7 +79,7 @@ int	ft_stack_is_sorted(t_stack *stk)
 }
 
 
-int	ft_stack_is_reverse_sorted(t_stack *stk)
+int	ft_stk_b_is_reversed(t_stack *stk)
 {
 	t_stack	*st_next;
 

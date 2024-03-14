@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 23:17:49 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/14 12:21:53 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_stack	*ft_stack_init(t_array_int *arg_num)
+t_stack	*ft_stk_init(t_array_int *arg_num)
 {
 	int		i;
 	t_stack	*next;
@@ -20,7 +20,7 @@ t_stack	*ft_stack_init(t_array_int *arg_num)
 	i = arg_num->length - 1;
 	next = NULL;
 	while (i >= 0)
-		next = ft_stack_elem_new(arg_num->array_int[i--], next);
+		next = ft_stk_elem_new(arg_num->array_int[i--], next);
 	if (arg_num->array_int != NULL)
 	{
 		free(arg_num->array_int);
@@ -29,7 +29,7 @@ t_stack	*ft_stack_init(t_array_int *arg_num)
 	return (next);
 }
 
-t_stack	*ft_stack_elem_new(int value, t_stack	*next)
+t_stack	*ft_stk_elem_new(int value, t_stack	*next)
 {
 	t_stack	*stack_elem;
 
@@ -41,29 +41,31 @@ t_stack	*ft_stack_elem_new(int value, t_stack	*next)
 	return (stack_elem);
 }
 
-void	ft_stack_free(t_stack **stack_ptr)
+void	ft_stk_free(t_stack *stk)
 {
-	t_stack	*st_current;
-	t_stack	*st_next;
+	t_stack	*stk_current;
+	t_stack	*stk_next;
 
-	st_next = NULL;
-	st_current = *stack_ptr;
-	*stack_ptr = NULL;
-	while (st_current)
+	stk_next = NULL;
+	stk_current = stk;
+	stk = NULL;
+	while (stk_current)
 	{
-		st_next = st_current->next;
-		free(st_current);
-		st_current = st_next;
+		stk_next = stk_current->next;
+		free(stk_current);
+		stk_current = stk_next;
 	}
 }
 
-void	ft_stuff_init(t_stuff	*stuff)
+void	ft_stks_init(t_stks	*stks)
 {
-	if (stuff)
+	if (stks)
 	{
-		stuff->debug = 0;
-		stuff->last_a_sorted = 0;
-		stuff->last_stk = 'a';
-		stuff->counter = 0;
+		stks->a = NULL;
+		stks->b = NULL;
+		stks->last_a_sorted = 0;
+		stks->last_stk = 'a';
+		stks->debug = 0;
+		stks->counter = 0;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 23:16:23 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/14 13:09:43 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,15 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-typedef struct s_stuff
+typedef struct s_stks
 {
-	int				debug;
+	t_stack			*a;
+	t_stack			*b;
+	char			last_stk;
 	int				last_a_sorted;
-	char 			last_stk;
+	int				debug;
 	int				counter;
-}	t_stuff;
+}	t_stks;
 
 
 
@@ -57,55 +59,55 @@ void	ft_print_t_array_int(t_array_int *arg_num);
 void	ft_free_array_str(char **temp_args);
 
 // Functions for STACKS init
-t_stack	*ft_stack_init(t_array_int *arg_num);
-t_stack	*ft_stack_elem_new(int value, t_stack	*next);
-void	ft_stack_free(t_stack **stack_ptr);
-void	ft_stuff_init(t_stuff	*stuff);
+t_stack	*ft_stk_init(t_array_int *arg_num);
+t_stack	*ft_stk_elem_new(int value, t_stack	*next);
+void	ft_stk_free(t_stack *stk);
+void	ft_stks_init(t_stks	*stks);
 
 // Functions for STACKS handling
-int		ft_stack_size(t_stack *stack);
-int		ft_value_last(t_stack **stk);
-int		ft_stack_get_pivot(t_stack **stack, int half);
-int		ft_stack_is_sorted(t_stack *st_head);
-int		ft_stack_is_reverse_sorted(t_stack *st_head);
+int		ft_stk_size(t_stack *stk);
+int		ft_value_last(t_stack *stk);
+int		ft_stk_get_pivot(t_stack *stk, int half);
+int		ft_stk_a_is_sorted(t_stack *stk);
+int		ft_stk_b_is_reversed(t_stack *stk);
 
 // Functions for STACKS printing
-void	ft_stack_print(t_stack *head, const char *mode);
-void	ft_stacks_print(t_stack *stack_a, t_stack *stack_b);
+void	ft_stk_print(t_stack *head, const char *mode);
+void	ft_stks_print(t_stks *stks);
 
 // Stack Operations
-int		ft_swap(t_stack **stack_ptr);
-int		sa(t_stack **stack_a);
-int		sb(t_stack **stack_b);
-int		ss(t_stack **stack_a, t_stack **stack_b);
+int		ft_swap(t_stack *stk);
+int		sa(t_stks *stks);
+int		sb(t_stks *stks);
+int		ss(t_stks *stks);
 
-int		ft_push(t_stack **stack_a, t_stack **stack_b);
-int		pa(t_stack **stack_a, t_stack **stack_b);
-int		pb(t_stack **stack_b, t_stack **stack_a);
+int		ft_push(t_stks *stks, char source);
+int		pa(t_stks *stks);
+int		pb(t_stks *stks);
 
-int		ft_rotate(t_stack **stack_ptr);
-int		ra(t_stack **stack_a);
-int		rb(t_stack **stack_a);
-int		rr(t_stack **stack_a, t_stack **stack_b);
+int		ft_rotate(t_stack *stk);
+int		ra(t_stks *stks);
+int		rb(t_stks *stks);
+int		rr(t_stks *stks);
 
-int		ft_reverse_rotate(t_stack **stack_ptr);
-int		rra(t_stack **stack_a);
-int		rrb(t_stack **stack_a);
-int		rrr(t_stack **stack_a, t_stack **stack_b);
+int		ft_reverse_rotate(t_stack *stk);
+int		rra(t_stks *stks);
+int		rrb(t_stks *stks);
+int		rrr(t_stks *stks);
 
-int		rasa(t_stack **stack_a);
-int		sara(t_stack **stack_a);
-int		rbsb(t_stack **stack_b);
-int		sbrb(t_stack **stack_b);
-void	dump_b(t_stack **stack_a, t_stack **stack_b);
+int		rasa(t_stks *stks);
+int		sara(t_stks *stks);
+int		rbsb(t_stks *stks);
+int		sbrb(t_stks *stks);
+void	dump_b(t_stks *stks);
 
 // Functions for STACK SORTING
-int		ft_stack_sort(t_stack **stack_a, t_stack **stack_b, char last);
-int		ft_stack_sort_three(t_stack **stk);
-int		ft_stack_sort_three_reversed(t_stack **stk);
-void	divide_a(t_stack **stack_a, t_stack **stack_b);
-void	divide_b(t_stack **stack_a, t_stack **stack_b);
-char	ft_divide_conquer(t_stack **stack_a, t_stack **stack_b, char last);
+int		ft_stks_sort(t_stks *stks);
+int		ft_stk_a_sort_three(t_stks *stks);
+int		ft_stk_b_sort_three_reversed(t_stks *stks);
+void	ft_divide_a(t_stks *stks);
+void	ft_divide_b(t_stks *stks);
+void	ft_divide_conquer(t_stks *stks);
 
 #endif
 
