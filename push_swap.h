@@ -6,10 +6,9 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 13:09:43 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:41:34 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -43,8 +42,6 @@ typedef struct s_stks
 	int				counter;
 }	t_stks;
 
-
-
 // Functions for checking arguments. At ./args/ft_check_args.c
 int		ft_unique(int num_to_check, unsigned int n, t_array_int *arg_num);
 int		ft_arg_to_i(char **temp_args, unsigned int n, t_array_int *arg_num);
@@ -57,6 +54,7 @@ void	ft_error(char **ptr_char, t_array_int *arg_num);
 void	ft_print_array_str(char **array);
 void	ft_print_t_array_int(t_array_int *arg_num);
 void	ft_free_array_str(char **temp_args);
+size_t	ft_arg_size(const char *s);
 
 // Functions for STACKS init
 t_stack	*ft_stk_init(t_array_int *arg_num);
@@ -110,4 +108,3 @@ void	ft_divide_b(t_stks *stks);
 void	ft_divide_conquer(t_stks *stks);
 
 #endif
-

@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 13:15:14 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:44:18 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	ft_value_last(t_stack *stk)
 	if (!stk)
 		return (0);
 	stk_current = stk;
-	while (stk_current){
+	while (stk_current)
+	{
 		value_last = stk_current->value;
 		stk_current = stk_current->next;
 	}
@@ -77,7 +78,6 @@ int	ft_stk_a_is_sorted(t_stack *stk)
 	}
 	return (1);
 }
-
 
 int	ft_stk_b_is_reversed(t_stack *stk)
 {

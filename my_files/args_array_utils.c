@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2024/02/22 16:14:53 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:41:09 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,12 @@ void	ft_free_array_str(char **temp_args)
 		free(temp_args);
 		temp_args = NULL;
 	}
+}
+
+size_t	ft_arg_size(const char *s)
+{
+	size_t	size;
+
+	size = sizeof(char) * (ft_strlen(s) + 1);
+	return (size);
 }

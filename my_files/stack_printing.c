@@ -6,10 +6,9 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 14:05:21 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:45:19 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../push_swap.h"
 
@@ -20,7 +19,6 @@ void	ft_stks_print(t_stks *stks)
 
 	stk_a_temp = stks->a;
 	stk_b_temp = stks->b;
-	ft_printf("\n\n\nSTACKS:\n");
 	while (stk_a_temp || stk_b_temp)
 	{
 		if (stk_a_temp)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/13 22:33:47 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/14 15:41:57 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ char	**ft_args_split(int argc, char **argv)
 		i = 1;
 		while (i < argc)
 		{
-			temp_args[i - 1] = (char *)malloc(sizeof(char) * (ft_strlen(argv[i]) + 1));
+			temp_args[i - 1] = (char *)malloc(ft_arg_size(argv[i]));
 			ft_strcpy(argv[i], temp_args[i - 1], 0);
 			i++;
 		}
-		temp_args[i-1] = 0;
+		temp_args[i - 1] = 0;
 	}
 	return (temp_args);
 }
@@ -112,8 +112,6 @@ void	ft_args_check(int argc, char **argv, t_array_int *arg_num)
 	int			check;
 
 	temp_args = ft_args_split(argc, argv);
-	// if (!temp_args)
-	// 	exit (0);
 	check = ft_args_to_num(temp_args, arg_num);
 	ft_free_array_str(temp_args);
 	if (!check)
