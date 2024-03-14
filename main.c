@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 14:25:43 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:01:10 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,30 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (-1);
 	ft_args_check(argc, argv, &arg_num);
-	ft_stks_init(&stks);
 	stks.a = ft_stk_init(&arg_num);
+	stks.b = NULL;
+	stks.last_stk = 'a';
+	stks.last_a_sorted = 0;
 	stks.debug = 1;
-
-ft_stks_print(&stks);
-	ra(&stks);
-	ra(&stks);
-	ft_stks_print(&stks);
+	stks.counter = 0;
 
 
-	// ft_stks_sort(&stks);
+
+// ft_stks_print(&stks);
+// 	pa(&stks);
+// 	pb(&stks);
+
+// 	pa(&stks);
+// 	pa(&stks);
+
+// 	ra(&stks);
+// 	sa(&stks);
+// 	rra(&stks);
+// 	ft_stks_print(&stks);
+// 	ft_printf("counter: %d\n", stks.counter);
+
+
+	ft_stks_sort(&stks);
 	return (0);
 }
 

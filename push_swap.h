@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 15:41:34 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:59:00 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ size_t	ft_arg_size(const char *s);
 t_stack	*ft_stk_init(t_array_int *arg_num);
 t_stack	*ft_stk_elem_new(int value, t_stack	*next);
 void	ft_stk_free(t_stack *stk);
-void	ft_stks_init(t_stks	*stks);
 
 // Functions for STACKS handling
 int		ft_stk_size(t_stack *stk);
@@ -74,7 +73,7 @@ void	ft_stk_print(t_stack *head, const char *mode);
 void	ft_stks_print(t_stks *stks);
 
 // Stack Operations
-int		ft_swap(t_stack *stk);
+int		ft_swap(t_stack **stk);
 int		sa(t_stks *stks);
 int		sb(t_stks *stks);
 int		ss(t_stks *stks);
@@ -83,12 +82,12 @@ int		ft_push(t_stks *stks, char source);
 int		pa(t_stks *stks);
 int		pb(t_stks *stks);
 
-int		ft_rotate(t_stack *stk);
+int		ft_rotate(t_stack **stk);
 int		ra(t_stks *stks);
 int		rb(t_stks *stks);
 int		rr(t_stks *stks);
 
-int		ft_reverse_rotate(t_stack *stk);
+int		ft_reverse_rotate(t_stack **stk);
 int		rra(t_stks *stks);
 int		rrb(t_stks *stks);
 int		rrr(t_stks *stks);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 12:21:53 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:58:35 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,3 @@ void	ft_stk_free(t_stack *stk)
 	}
 }
 
-void	ft_stks_init(t_stks	*stks)
-{
-	if (stks)
-	{
-		stks->a = NULL;
-		stks->b = NULL;
-		stks->last_a_sorted = 0;
-		stks->last_stk = 'a';
-		stks->debug = 0;
-		stks->counter = 0;
-	}
-}
