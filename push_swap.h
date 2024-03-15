@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 16:59:00 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/15 00:17:44 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,20 @@ typedef struct s_stack
 typedef struct s_stks
 {
 	t_stack			*a;
+	int				a_len;
+	int				a_first_srtd;
+	int				a_len_pend;
+	int				a_half;
+	int				a_pivot;
+	int				a_last;
 	t_stack			*b;
+	int				b_len;
+	int				b_first_rev;
+	int				b_len_pend;
+	int				b_half;
+	int				b_pivot;
+	int				b_last;
 	char			last_stk;
-	int				last_a_sorted;
 	int				debug;
 	int				counter;
 }	t_stks;
@@ -64,9 +75,14 @@ void	ft_stk_free(t_stack *stk);
 // Functions for STACKS handling
 int		ft_stk_size(t_stack *stk);
 int		ft_value_last(t_stack *stk);
-int		ft_stk_get_pivot(t_stack *stk, int half);
-int		ft_stk_a_is_sorted(t_stack *stk);
-int		ft_stk_b_is_reversed(t_stack *stk);
+int		ft_stk_get_pivot(t_stack *stk, int half, int first_srtd);
+
+// Functions for STACKS check
+int		ft_a_is_sorted(t_stack *stk);
+int		ft_b_is_reversed(t_stack *stk);
+void	ft_a_first_sorted(t_stks *stks);
+void	ft_b_first_reversed(t_stks *stks);
+void	ft_check_stks(t_stks *stks);
 
 // Functions for STACKS printing
 void	ft_stk_print(t_stack *head, const char *mode);

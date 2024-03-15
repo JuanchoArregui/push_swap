@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 15:44:18 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/14 23:57:15 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,54 +41,28 @@ int	ft_value_last(t_stack *stk)
 	return (value_last);
 }
 
-int	ft_stk_get_pivot(t_stack *stk, int half)
+int	ft_stk_get_pivot(t_stack *stk, int half, int first_srtd)
 {
-	int		smaller;
+	int		smallers;
 	t_stack	*stk_current;
 	t_stack	*stk_temp;
 
+	if (!stk)
+		return (0);
 	stk_current = stk;
-	while (stk_current)
+	while (stk_current && stk_current->value != first_srtd)
 	{
-		smaller = 0;
+		smallers = 0;
 		stk_temp = stk;
-		while (stk_temp)
+		while (stk_temp && stk_temp->value != first_srtd)
 		{
 			if (stk_temp->value > stk_current->value)
-				smaller++;
+				smallers++;
 			stk_temp = stk_temp->next;
 		}
-		if (smaller == half)
+		if (smallers == half)
 			break ;
 		stk_current = stk_current->next;
 	}
 	return (stk_current->value);
-}
-
-int	ft_stk_a_is_sorted(t_stack *stk)
-{
-	t_stack	*st_next;
-
-	st_next = stk;
-	while (st_next && st_next->next)
-	{
-		if (st_next->value > st_next->next->value)
-			return (0);
-		st_next = st_next->next;
-	}
-	return (1);
-}
-
-int	ft_stk_b_is_reversed(t_stack *stk)
-{
-	t_stack	*st_next;
-
-	st_next = stk;
-	while (st_next && st_next->next)
-	{
-		if (st_next->value < st_next->next->value)
-			return (0);
-		st_next = st_next->next;
-	}
-	return (1);
 }
