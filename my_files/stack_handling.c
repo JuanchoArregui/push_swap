@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 23:57:15 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/15 18:56:47 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,53 @@ int	ft_stk_get_pivot(t_stack *stk, int half, int first_srtd)
 	if (!stk)
 		return (0);
 	stk_current = stk;
+	ft_printf("\nGET PIVOT - half = %d", half);
+	
 	while (stk_current && stk_current->value != first_srtd)
 	{
+		
 		smallers = 0;
 		stk_temp = stk;
 		while (stk_temp && stk_temp->value != first_srtd)
 		{
+			//creo que hay q cambiar el signo dependiendoe de si es A o B
+			//Y luego revisar en divide a y b que uno de los quité un >= y lo puso soo >
 			if (stk_temp->value > stk_current->value)
+			{
+				ft_printf("\n stk_temp->value: %d - stk_current->value: %d", stk_temp->value, stk_current->value);
+
 				smallers++;
+			}
 			stk_temp = stk_temp->next;
 		}
+		ft_printf("\n stk_current->value: %d - smallers: %d", stk_current->value, smallers);
 		if (smallers == half)
 			break ;
 		stk_current = stk_current->next;
 	}
 	return (stk_current->value);
+}
+
+int	ft_check_first_sort(t_stack *stk, int val)
+{
+
+	while (stk && stk->value != val)
+	{
+		if (stk->value > val)
+			return (0);
+		stk = stk->next;
+	}
+	return (1);
+}
+
+int	ft_check_first_rev(t_stack *stk, int val)
+{
+
+	while (stk && stk->value != val)
+	{
+		if (stk->value < val)
+			return (0);
+		stk = stk->next;
+	}
+	return (1);
 }

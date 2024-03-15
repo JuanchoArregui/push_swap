@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 22:48:11 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/15 18:57:20 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ int	main(int argc, char **argv)
 	ft_args_check(argc, argv, &arg_num);
 	stks.a = ft_stk_init(&arg_num);
 	stks.b = NULL;
-	stks.last_stk = 'a';
+	stks.current_stk = 'a';
 	stks.debug = 1;
 	stks.counter = 0;
 	ft_stks_sort(&stks);
 	return (0);
 }
-
+// CNTINUAR PROBANDO CN ESTE:
+// ./push_swap 3 5 8 9 1 2 88 77 11 -3 678 99 878 934 231 0
 
 // 5 1 9 8 99 88 77 666 65 -33 -34443 -343 -333 9999999 0 6636 -223 

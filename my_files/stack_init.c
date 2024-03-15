@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 16:58:35 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/15 14:10:03 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,3 @@ void	ft_stk_free(t_stack *stk)
 		stk_current = stk_next;
 	}
 }
-

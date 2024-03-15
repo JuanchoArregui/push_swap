@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/15 00:17:44 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/15 17:00:27 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_stks
 	int				b_half;
 	int				b_pivot;
 	int				b_last;
-	char			last_stk;
+	char			current_stk;
 	int				debug;
 	int				counter;
 }	t_stks;
@@ -76,10 +76,12 @@ void	ft_stk_free(t_stack *stk);
 int		ft_stk_size(t_stack *stk);
 int		ft_value_last(t_stack *stk);
 int		ft_stk_get_pivot(t_stack *stk, int half, int first_srtd);
+int		ft_check_first_sort(t_stack *stk, int val);
+int		ft_check_first_rev(t_stack *stk, int val);
 
 // Functions for STACKS check
-int		ft_a_is_sorted(t_stack *stk);
-int		ft_b_is_reversed(t_stack *stk);
+int		ft_is_sorted(t_stack *stk);
+int		ft_is_reversed(t_stack *stk);
 void	ft_a_first_sorted(t_stks *stks);
 void	ft_b_first_reversed(t_stks *stks);
 void	ft_check_stks(t_stks *stks);
@@ -116,8 +118,8 @@ void	dump_b(t_stks *stks);
 
 // Functions for STACK SORTING
 int		ft_stks_sort(t_stks *stks);
-int		ft_stk_a_sort_three(t_stks *stks);
-int		ft_stk_b_sort_three_reversed(t_stks *stks);
+int		ft_a_sort_three(t_stks *stks);
+int		ft_b_reverse_three(t_stks *stks);
 void	ft_divide_a(t_stks *stks);
 void	ft_divide_b(t_stks *stks);
 void	ft_divide_conquer(t_stks *stks);

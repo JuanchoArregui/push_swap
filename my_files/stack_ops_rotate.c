@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_ops_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 16:36:54 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/15 14:01:23 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	ra(t_stks *stks)
 	if (!res_a)
 		return (0);
 	stks->counter += 1;
+	stks->a_last = ft_value_last(stks->a);
 	ft_printf("ra\n");
 	return (1);
 }
@@ -51,6 +52,7 @@ int	rb(t_stks *stks)
 	if (!res_b)
 		return (0);
 	stks->counter += 1;
+	stks->b_last = ft_value_last(stks->b);
 	ft_printf("rb\n");
 	return (1);
 }
@@ -65,6 +67,8 @@ int	rr(t_stks *stks)
 	if (!res_a || !res_b)
 		return (0);
 	stks->counter += 1;
+	stks->a_last = ft_value_last(stks->a);
+	stks->b_last = ft_value_last(stks->b);
 	ft_printf("rr\n");
 	return (1);
 }

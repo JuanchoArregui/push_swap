@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/15 00:28:10 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/15 17:04:02 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_a_is_sorted(t_stack *stk)
+int	ft_is_sorted(t_stack *stk)
 {
 	t_stack	*st_next;
 
@@ -26,7 +26,7 @@ int	ft_a_is_sorted(t_stack *stk)
 	return (1);
 }
 
-int	ft_b_is_reversed(t_stack *stk)
+int	ft_is_reversed(t_stack *stk)
 {
 	t_stack	*st_next;
 
@@ -45,70 +45,65 @@ void	ft_a_first_sorted(t_stks *stks)
 	t_stack	*stk_current;
 	int		counter;
 
-	stks->a_len = ft_stk_size(stks->a);
-	stks->a_last = ft_value_last(stks->a);
 	stk_current = stks->a;
 	counter = 0;
-	while (stk_current && !ft_a_is_sorted(stk_current))
+	stks->a_first_srtd = stks->a_last;
+	stks->a_len_pend = stks->a_len;
+	if (stks->a)
 	{
-		stk_current = stk_current->next;
-		counter += 1;
+		while (!ft_is_sorted(stk_current))
+		{
+			stk_current = stk_current->next;
+			counter += 1;
+		}
+		if (ft_check_first_sort(stks->a, stk_current->value))
+		{
+			stks->a_first_srtd = stk_current->value;
+			if (stk_current->value == stks->a_last)
+				stks->a_len_pend = stks->a_len;
+			else
+				stks->a_len_pend = counter;
+		}
 	}
-	// if (stk_current)
-	// {
-	// 	ft_printf("\n 11111111111");
-	// 	stks->a_first_srtd = stk_current->value;
-	// 	stks->a_len_pend = counter;
-	// }
-	// else
-	// {
-	// 	ft_printf("\n 222222222222");
-	// 	stks->a_first_srtd = first_sorted;
-	// 	stks->a_len_pend = counter + 1;
-	// }
-	stks->a_first_srtd = stk_current->value;
-	if (stk_current->value == stks->a_last)
-		stks->a_len_pend = stks->a_len;
-	else
-		stks->a_len_pend = counter;
 	stks->a_half = stks->a_len_pend / 2;
+	stks->a_pivot = ft_stk_get_pivot(stks->a, stks->a_half, stks->a_first_srtd);
 }
 
 void	ft_b_first_reversed(t_stks *stks)
 {
 	t_stack	*stk_current;
-	int		last_reversed;
 	int		counter;
 
-	stks->b_len = ft_stk_size(stks->b);
-	stks->b_last = ft_value_last(stks->b);
 	stk_current = stks->b;
-	last_reversed = 0;
 	counter = 0;
-	while (stk_current && !ft_b_is_reversed(stk_current))
+	stks->b_first_rev = stks->b_last;
+	stks->b_len_pend = stks->b_len;
+	if (stks->b)
 	{
-		last_reversed = stk_current->value;
-		stk_current = stk_current->next;
-		counter += 1;
+		while (!ft_is_reversed(stk_current))
+		{
+			stk_current = stk_current->next;
+			counter += 1;
+		}
+		if (ft_check_first_rev(stks->b, stk_current->value))
+		{
+			stks->b_first_rev = stk_current->value;
+			if (stk_current->value == stks->b_last)
+				stks->b_len_pend = stks->b_len;
+			else
+				stks->b_len_pend = counter;
+		}
 	}
-	if (stk_current)
-	{
-		stks->b_first_rev = stk_current->value;
-		stks->b_len_pend = counter;
-	}
-	else
-	{
-		stks->b_first_rev = last_reversed;
-		stks->b_len_pend = counter + 1;
-	}
-	stks->b_half = counter / 2;
+	stks->b_half = stks->b_len_pend / 2;
+	stks->b_pivot = ft_stk_get_pivot(stks->b, stks->b_half, stks->b_first_rev);
 }
 
 void	ft_check_stks(t_stks *stks)
 {
+	stks->a_len = ft_stk_size(stks->a);
+	stks->a_last = ft_value_last(stks->a);
 	ft_a_first_sorted(stks);
-	stks->a_pivot = ft_stk_get_pivot(stks->a, stks->a_half, stks->a_first_srtd);
-
+	stks->b_len = ft_stk_size(stks->b);
+	stks->b_last = ft_value_last(stks->b);
 	ft_b_first_reversed(stks);
-	stks->b_pivot = ft_stk_get_pivot(stks->b, stks->b_half, stks->b_first_rev);
 }
