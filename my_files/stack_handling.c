@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/15 18:56:47 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/16 02:21:20 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,43 +41,7 @@ int	ft_value_last(t_stack *stk)
 	return (value_last);
 }
 
-int	ft_stk_get_pivot(t_stack *stk, int half, int first_srtd)
-{
-	int		smallers;
-	t_stack	*stk_current;
-	t_stack	*stk_temp;
-
-	if (!stk)
-		return (0);
-	stk_current = stk;
-	ft_printf("\nGET PIVOT - half = %d", half);
-	
-	while (stk_current && stk_current->value != first_srtd)
-	{
-		
-		smallers = 0;
-		stk_temp = stk;
-		while (stk_temp && stk_temp->value != first_srtd)
-		{
-			//creo que hay q cambiar el signo dependiendoe de si es A o B
-			//Y luego revisar en divide a y b que uno de los quité un >= y lo puso soo >
-			if (stk_temp->value > stk_current->value)
-			{
-				ft_printf("\n stk_temp->value: %d - stk_current->value: %d", stk_temp->value, stk_current->value);
-
-				smallers++;
-			}
-			stk_temp = stk_temp->next;
-		}
-		ft_printf("\n stk_current->value: %d - smallers: %d", stk_current->value, smallers);
-		if (smallers == half)
-			break ;
-		stk_current = stk_current->next;
-	}
-	return (stk_current->value);
-}
-
-int	ft_check_first_sort(t_stack *stk, int val)
+int	ft_fst_a_ok(t_stack *stk, int val)
 {
 
 	while (stk && stk->value != val)
@@ -89,7 +53,7 @@ int	ft_check_first_sort(t_stack *stk, int val)
 	return (1);
 }
 
-int	ft_check_first_rev(t_stack *stk, int val)
+int	ft_fst_b_ok(t_stack *stk, int val)
 {
 
 	while (stk && stk->value != val)
@@ -99,4 +63,71 @@ int	ft_check_first_rev(t_stack *stk, int val)
 		stk = stk->next;
 	}
 	return (1);
+}
+
+
+
+
+
+
+void	ft_a_get_pivot(t_stks *stks)
+{
+	int		smallers;
+	t_stack	*stk;
+	t_stack	*stk_temp;
+	int		all;
+
+	// ft_printf("\nGET PIVOT - half = %d", stks->a_half);
+	all = (stks->a_last == stks->a_first_srtd);
+	stk = stks->a;
+	while (stk && (all || stk->value != stks->a_first_srtd))
+	{
+		smallers = 0;
+		stk_temp = stks->a;
+		while (stk_temp && (all || stk->value != stks->a_first_srtd))
+		{
+			if (stk_temp->value < stk->value)
+			{
+				// ft_printf("\n stk_temp->value: %d - stk->value: %d", stk_temp->value, stk->value);
+
+				smallers++;
+			}
+			stk_temp = stk_temp->next;
+		}
+		// ft_printf("\n stk->value: %d - smallers: %d", stk->value, smallers);
+		if (smallers == stks->a_half)
+			break ;
+		stk = stk->next;
+	}
+	stks->a_pivot = 0;
+	if (stk)
+		stks->a_pivot = stk->value;
+}
+
+void	ft_b_get_pivot(t_stks *stks)
+{
+	int		smallers;
+	t_stack	*stk;
+	t_stack	*stk_temp;
+	int		all;
+
+	all = (stks->b_last == stks->b_first_rev);
+	stk = stks->b;
+	while (stk && (all || stk->value != stks->b_first_rev))
+	{
+		smallers = 0;
+		stk_temp = stks->b;
+		while (stk_temp && (all || stk->value != stks->b_first_rev))
+		{
+			if (stk_temp->value > stk->value)
+				smallers++;
+			stk_temp = stk_temp->next;
+		}
+		if (smallers == stks->b_half)
+			break ;
+		stk = stk->next;
+	}
+	stks->b_pivot = 0;
+	if (stk)
+		stks->b_pivot = stk->value;
 }

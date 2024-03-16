@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/15 17:04:02 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/16 02:23:43 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_is_sorted(t_stack *stk)
+int	ft_is_sort(t_stack *stk)
 {
 	t_stack	*st_next;
 
@@ -26,7 +26,7 @@ int	ft_is_sorted(t_stack *stk)
 	return (1);
 }
 
-int	ft_is_reversed(t_stack *stk)
+int	ft_is_rev(t_stack *stk)
 {
 	t_stack	*st_next;
 
@@ -40,70 +40,70 @@ int	ft_is_reversed(t_stack *stk)
 	return (1);
 }
 
-void	ft_a_first_sorted(t_stks *stks)
+void	ft_a_check(t_stks *stks)
 {
-	t_stack	*stk_current;
+	t_stack	*stk;
 	int		counter;
 
-	stk_current = stks->a;
+	stk = stks->a;
 	counter = 0;
-	stks->a_first_srtd = stks->a_last;
-	stks->a_len_pend = stks->a_len;
 	if (stks->a)
 	{
-		while (!ft_is_sorted(stk_current))
+		while (stk && (!ft_is_sort(stk) || !ft_fst_a_ok(stks->a, stk->value)))
 		{
-			stk_current = stk_current->next;
+			stk = stk->next;
 			counter += 1;
 		}
-		if (ft_check_first_sort(stks->a, stk_current->value))
+		if (stk)
 		{
-			stks->a_first_srtd = stk_current->value;
-			if (stk_current->value == stks->a_last)
-				stks->a_len_pend = stks->a_len;
-			else
-				stks->a_len_pend = counter;
+			stks->a_first_srtd = stk->value;
+			stks->a_len_pend = counter;
+		}
+		else
+		{
+			stks->a_first_srtd = stks->a_last;
+			stks->a_len_pend = stks->a_len;
 		}
 	}
 	stks->a_half = stks->a_len_pend / 2;
-	stks->a_pivot = ft_stk_get_pivot(stks->a, stks->a_half, stks->a_first_srtd);
 }
 
-void	ft_b_first_reversed(t_stks *stks)
+void	ft_b_check(t_stks *stks)
 {
-	t_stack	*stk_current;
+	t_stack	*stk;
 	int		counter;
 
-	stk_current = stks->b;
+	stk = stks->b;
 	counter = 0;
-	stks->b_first_rev = stks->b_last;
-	stks->b_len_pend = stks->b_len;
 	if (stks->b)
 	{
-		while (!ft_is_reversed(stk_current))
+		while (stk && (!ft_is_rev(stk) || !ft_fst_a_ok(stks->a, stk->value)))
 		{
-			stk_current = stk_current->next;
+			stk = stk->next;
 			counter += 1;
 		}
-		if (ft_check_first_rev(stks->b, stk_current->value))
+		if (stk)
 		{
-			stks->b_first_rev = stk_current->value;
-			if (stk_current->value == stks->b_last)
-				stks->b_len_pend = stks->b_len;
-			else
-				stks->b_len_pend = counter;
+			stks->b_first_rev = stk->value;
+			stks->b_len_pend = counter;
+		}
+		else
+		{
+			stks->b_first_rev = stks->b_last;
+			stks->b_len_pend = stks->b_len;
 		}
 	}
 	stks->b_half = stks->b_len_pend / 2;
-	stks->b_pivot = ft_stk_get_pivot(stks->b, stks->b_half, stks->b_first_rev);
 }
 
 void	ft_check_stks(t_stks *stks)
 {
 	stks->a_len = ft_stk_size(stks->a);
 	stks->a_last = ft_value_last(stks->a);
-	ft_a_first_sorted(stks);
+	ft_a_check(stks);
+	ft_a_get_pivot(stks);
 	stks->b_len = ft_stk_size(stks->b);
 	stks->b_last = ft_value_last(stks->b);
-	ft_b_first_reversed(stks);
+	ft_b_check(stks);
+	ft_b_get_pivot(stks);
 }

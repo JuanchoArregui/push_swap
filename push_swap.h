@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/15 17:00:27 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/16 02:22:20 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,18 @@ void	ft_stk_free(t_stack *stk);
 // Functions for STACKS handling
 int		ft_stk_size(t_stack *stk);
 int		ft_value_last(t_stack *stk);
-int		ft_stk_get_pivot(t_stack *stk, int half, int first_srtd);
-int		ft_check_first_sort(t_stack *stk, int val);
-int		ft_check_first_rev(t_stack *stk, int val);
+int		ft_fst_a_ok(t_stack *stk, int val);
+int		ft_fst_b_ok(t_stack *stk, int val);
+
+
+void	ft_a_get_pivot(t_stks *stks);
+void	ft_b_get_pivot(t_stks *stks);
 
 // Functions for STACKS check
-int		ft_is_sorted(t_stack *stk);
-int		ft_is_reversed(t_stack *stk);
-void	ft_a_first_sorted(t_stks *stks);
-void	ft_b_first_reversed(t_stks *stks);
+int		ft_is_sort(t_stack *stk);
+int		ft_is_rev(t_stack *stk);
+void	ft_a_check(t_stks *stks);
+void	ft_b_check(t_stks *stks);
 void	ft_check_stks(t_stks *stks);
 
 // Functions for STACKS printing

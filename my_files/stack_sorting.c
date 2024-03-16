@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_sorting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:21 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/15 18:20:38 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/16 02:22:20 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_b_reverse_three(t_stks *stks)
 
 int	ft_stks_sort(t_stks *stks)
 {
-	if (ft_is_sorted(stks->a) && stks->b == NULL)
+	if (ft_is_sort(stks->a) && stks->b == NULL)
 	{
 		if (stks->debug)
 		{
@@ -82,7 +82,10 @@ int	ft_stks_sort(t_stks *stks)
 	else
 	{
 		if (stks->debug)
+		{
+			ft_printf("\n\n\n\n STACKS ANTES DE IR A DIVIDE & CONQUER:");
 			ft_stks_print(stks);
+		}
 		ft_divide_conquer(stks);
 	}
 	ft_stks_sort(stks);
@@ -98,9 +101,9 @@ void	ft_divide_a(t_stks *stks)
 		pa(stks);
 	while (counter < stks->a_half)
 	{
-		if ((stks->a)->value <= stks->a_pivot)
+		if ((stks->a)->value < stks->a_pivot)
 		{
-			ft_printf("////////(stks->a)->value: %d - stks->a_pivot: %d\n", (stks->a)->value, stks->a_pivot);
+			// ft_printf("////////(stks->a)->value: %d - stks->a_pivot: %d\n", (stks->a)->value, stks->a_pivot);
 			
 			pa(stks);
 			// if (stks->b && (stks->b)->value < ft_value_last(stks->b) && stks->a && (stks->a)->value > ft_value_last(stks->a))
@@ -128,13 +131,13 @@ void	ft_divide_b(t_stks *stks)
 {
 	int		counter;
 
-	ft_printf("ENTRANDO EN ft_divide_b");
+	ft_printf("ENTRANDO EN ft_divide_b\n");
 	counter = 0;
 	if (stks->b_half == 0)
 		pb(stks);
 	while (counter < stks->b_half)
 	{
-		ft_printf("////////(stks->b)->value: %d - stks->b_pivot: %d\n", (stks->b)->value, stks->b_pivot);
+		// ft_printf("////////(stks->b)->value: %d - stks->b_pivot: %d\n", (stks->b)->value, stks->b_pivot);
 		
 		if ((stks->b)->value > stks->b_pivot)
 		{
@@ -185,19 +188,40 @@ void	ft_divide_conquer(t_stks *stks)
 	ft_printf("stks->b_pivot: %d\n\n", stks->b_pivot);
 	ft_printf("stks->b_last: %d\n\n", stks->b_last);
 
-	if (stks->a && stks->a_len <= 3 && !ft_is_sorted(stks->a))
+	if (stks->a && stks->a_len <= 3)
 	{
-		ft_printf("*************** ordenamos A3 \n\n\n");
-		ft_a_sort_three(stks);
+		if (!ft_is_sort(stks->a))
+		{
+			ft_printf("*************** ordenamos A3 \n\n\n");
+			ft_a_sort_three(stks);
+		}
+		else
+		{
+			ft_printf("*************** A3 OK - pasamos a divide_b \n\n\n");
+			ft_divide_b(stks);
+		}
 	}
-	else if (stks->b && stks->b_len <= 3 && !ft_is_reversed(stks->b))
+	else if (stks->b && stks->b_len <= 3)
 	{
-		ft_printf("*************** revertimos B3 \n\n\n");
-		ft_b_reverse_three(stks);
+		if (!ft_is_rev(stks->b))
+		{
+			ft_printf("*************** revertimos B3 \n\n\n");
+			ft_b_reverse_three(stks);
+		}
+		else if (ft_is_sort(stks->a))
+		{
+			ft_printf("*************** A OK y rev B OK y solo queda volcar \n\n\n");
+			dump_b(stks);
+		}
+		else
+		{
+			ft_printf("*************** B3 OK - pasamos a divide_a \n\n\n");
+			ft_divide_a(stks);
+		}
 	}
 	else if (!stks->b && stks->a)
 	{
-		if (ft_is_reversed(stks->a))
+		if (ft_is_rev(stks->a))
 		{
 			ft_printf("*************** hacer función reverse!!!! \n\n\n");
 		}
@@ -209,12 +233,13 @@ void	ft_divide_conquer(t_stks *stks)
 	}
 	else if (!stks->a && stks->b)
 	{
-		if (ft_is_reversed(stks->b))
+		//En teoria nunca llegariamos aqui
+		if (ft_is_rev(stks->b))
 		{
 			ft_printf("*************** ordenado rev B y solo queda volcar \n\n\n");
 			dump_b(stks);
 		}
-		else if (ft_is_sorted(stks->b))
+		else if (ft_is_sort(stks->b))
 		{
 			//hacer función reverse dump
 			ft_printf("*************** hacer función reverse dumpppppppp!!!! \n\n\n");
@@ -225,7 +250,7 @@ void	ft_divide_conquer(t_stks *stks)
 			ft_divide_b(stks);
 		}
 	}
-	else if (stks->a && ft_is_sorted(stks->a) && stks->b && ft_is_reversed(stks->b))
+	else if (stks->a && ft_is_sort(stks->a) && stks->b && ft_is_rev(stks->b))
 	{
 		if (stks->a->value > stks->b->value)
 		{
@@ -266,7 +291,7 @@ void	ft_divide_conquer(t_stks *stks)
 		
 	// 	ft_divide_a(stks);
 	// }
-	// else if (stks->b && stks->b_len <= 3 && !ft_is_reversed(stks->b))
+	// else if (stks->b && stks->b_len <= 3 && !ft_is_rev(stks->b))
 	// {
 	// 	ft_printf("CCCCCCC \n");
 		
@@ -280,7 +305,7 @@ void	ft_divide_conquer(t_stks *stks)
 	// 	ft_divide_b(stks);
 	// 	stks->current_stk = 'b';
 	// }
-	// else if (stks->a && ft_is_sorted(stks->a) && stks->b && ft_is_reversed(stks->b) && (stks->a)->value > (stks->b)->value)
+	// else if (stks->a && ft_is_sort(stks->a) && stks->b && ft_is_rev(stks->b) && (stks->a)->value > (stks->b)->value)
 	// {
 	// 	ft_printf("EEEEEEEEE \n");
 		
