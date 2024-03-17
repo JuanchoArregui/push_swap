@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 15:41:57 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 00:10:13 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ int	ft_arg_to_i(char **temp_args, unsigned int n, t_array_int *arg_num)
 	unsigned int	i;
 
 	nb = 0;
-	sign = 1;
 	i = 0;
-	if (temp_args[n][i] == '-' || temp_args[n][i] == '+')
+	sign = 1 - (2 * (temp_args[n][0] == '-'));
+	if (i == 0 && (temp_args[n][i] == '-' || temp_args[n][i] == '+'))
 	{
-		if (temp_args[n][i++] == '-')
-			sign *= -1;
+		if (ft_strlen(temp_args[n]) == 1)
+			return (0);
+		else
+			i = 1;
 	}
 	while (temp_args[n][i])
 	{
@@ -51,9 +53,8 @@ int	ft_arg_to_i(char **temp_args, unsigned int n, t_array_int *arg_num)
 	if (sign * nb < -2147483648 || sign * nb > 2147483647)
 		return (0);
 	if (!ft_unique((int)(sign * nb), n, arg_num))
-		return (0);
-	arg_num->array_int[n] = (int)(sign * nb);
-	return (1);
+		return (-1);
+	return (arg_num->array_int[n] = (int)(sign * nb), 1);
 }
 
 char	**ft_args_split(int argc, char **argv)
@@ -86,22 +87,26 @@ char	**ft_args_split(int argc, char **argv)
 
 int	ft_args_to_num(char **temp_args, t_array_int *arg_num)
 {
-	unsigned int	length;
+	unsigned int	len;
 	int				check;
 
-	length = 0;
-	while (temp_args[length] != 0)
-		length++;
-	arg_num->length = length;
-	arg_num->array_int = (int *)malloc((length) * sizeof(int));
+	len = 0;
+	while (temp_args[len] != 0)
+		len++;
+	arg_num->length = len;
+	arg_num->array_int = (int *)malloc((len) * sizeof(int));
 	if (!arg_num->array_int)
 		return (0);
-	while (length > 0)
+	while (len > 0)
 	{
-		check = ft_arg_to_i(temp_args, length - 1, arg_num);
-		if (!check)
+		check = ft_arg_to_i(temp_args, len - 1, arg_num);
+		if (arg_num->debug && check < 0)
+			ft_printf("\nDuplicado - ");
+		if (arg_num->debug && check < 1)
+			ft_printf("\nArg invalid pos: %d: %s\n", len, temp_args[len - 1]);
+		if (check < 1)
 			ft_error(temp_args, arg_num);
-		length--;
+		len--;
 	}
 	return (1);
 }
@@ -112,7 +117,17 @@ void	ft_args_check(int argc, char **argv, t_array_int *arg_num)
 	int			check;
 
 	temp_args = ft_args_split(argc, argv);
+	if (arg_num->debug)
+	{
+		ft_printf("Array de strings a Evaluar:\n");
+		ft_print_array_str(temp_args);
+	}
 	check = ft_args_to_num(temp_args, arg_num);
+	if (arg_num->debug)
+	{
+		ft_printf("Array de ints:\n");
+		ft_print_t_array_int(arg_num);
+	}
 	ft_free_array_str(temp_args);
 	if (!check)
 		ft_error(temp_args, arg_num);

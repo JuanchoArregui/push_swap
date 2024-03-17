@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 19:21:11 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/17 21:18:43 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_array_int
 {
 	unsigned int	length;
 	int				*array_int;
+	int				debug;
 }	t_array_int;
 
 // Stack

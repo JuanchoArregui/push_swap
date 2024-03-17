@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:36:28 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 15:41:09 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/17 21:10:44 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_error(char **ptr_char, t_array_int *arg_num)
 		free(arg_num->array_int);
 		arg_num->array_int = NULL;
 	}
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	exit(0);
 }
 
