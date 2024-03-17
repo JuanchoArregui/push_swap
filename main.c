@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/16 02:29:45 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/17 18:50:40 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,15 @@ int	main(int argc, char **argv)
 	ft_args_check(argc, argv, &arg_num);
 	stks.a = ft_stk_init(&arg_num);
 	stks.b = NULL;
-	stks.current_stk = 'a';
-	stks.debug = 1;
-	stks.counter = 0;
+	stks.debug = 0;
+	stks.ops = 0;
 	ft_stks_sort(&stks);
 	return (0);
 }
+
 // CNTINUAR PROBANDO CN ESTE:
+// ./push_swap -1 2 1 4 5 6
 // ./push_swap 3 5 8 9 1 2 88 77 11 -3 678 99 878 934 231 0
-
-//Mira si a_len_pend esto se usa para algo.
-// y tb current_stk: 'b'
-
-
-
-//Hay que hacer esto:
-//./push_swap -1 2 1 4 5 6
-
-//Y revisar en los divide si tiene sentido parar después del último push 
-//o si hay que seguir para dar la vuelta y dejar el stack como estaba 
-//o incluso hacer un reverse y voverlos a poner arriba para dejarlo como estaba
-
-
-//
-// 5 1 9 8 99 88 77 666 65 -33 -34443 -343 -333 9999999 0 6636 -223 
+// ./push_swap 5 1 9 8 99 88 77 666 65 -33 -34443 -343 -333 9999999 0 6636 -223 
+// ./push_swap 3 5 8 9 1 2 88 77 11 -3 678 99 878 934 231 0 78 687 7476 8473 
+// 1111111 -34 -566 -23 -346 -46 -89 -90 8769 -12222 3444

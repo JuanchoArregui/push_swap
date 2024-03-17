@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_ops_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/15 14:01:23 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:37:08 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ int	ra(t_stks *stks)
 	res_a = ft_rotate(&stks->a);
 	if (!res_a)
 		return (0);
-	stks->counter += 1;
-	stks->a_last = ft_value_last(stks->a);
+	stks->ops += 1;
 	ft_printf("ra\n");
 	return (1);
 }
@@ -51,8 +50,7 @@ int	rb(t_stks *stks)
 	res_b = ft_rotate(&stks->b);
 	if (!res_b)
 		return (0);
-	stks->counter += 1;
-	stks->b_last = ft_value_last(stks->b);
+	stks->ops += 1;
 	ft_printf("rb\n");
 	return (1);
 }
@@ -66,9 +64,7 @@ int	rr(t_stks *stks)
 	res_b = ft_rotate(&stks->b);
 	if (!res_a || !res_b)
 		return (0);
-	stks->counter += 1;
-	stks->a_last = ft_value_last(stks->a);
-	stks->b_last = ft_value_last(stks->b);
+	stks->ops += 1;
 	ft_printf("rr\n");
 	return (1);
 }

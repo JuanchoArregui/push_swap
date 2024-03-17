@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_printing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 15:45:19 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/17 18:38:26 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,13 @@ void	ft_stks_print(t_stks *stks)
 	ft_printf("\n A     B \n\n");
 }
 
-void	ft_stk_print(t_stack *head, const char *mode)
+void	ft_stks_print_info(t_stks *stks)
 {
-	t_stack	*tmp;
-	int		brackets;
-
-	if (mode && ft_strcmp(mode, "detalle") == 0)
-		brackets = 1;
-	else
-		brackets = 0;
-	tmp = head;
-	while (tmp != NULL)
-	{
-		if (brackets)
-			ft_printf("\n{\n value: %d, \n next: %p\n}", tmp->value, tmp->next);
-		else
-		{
-			ft_printf("%d", tmp->value);
-			if (tmp->next != NULL)
-				ft_printf(" -> ");
-		}
-		tmp = tmp->next;
-	}
+	ft_printf("\n NUM OPS: %d\n", stks->ops);
+	ft_printf("stks->a_len:        %d  -  %d\n", stks->a_len, stks->b_len);
+	ft_printf("stks->a_first_srtd: %d  -  %d\n", stks->a_first_srtd, stks->b_first_rev);
+	ft_printf("stks->a_len_pend:   %d  -  %d\n", stks->a_len_pend, stks->b_len_pend);
+	ft_printf("stks->a_half:       %d  -  %d\n", stks->a_half, stks->b_half);
+	ft_printf("stks->a_pivot:      %d  -  %d\n", stks->a_pivot, stks->b_pivot);
+	ft_printf("stks->a_last:       %d  -  %d\n", stks->a_last, stks->a_last);
 }

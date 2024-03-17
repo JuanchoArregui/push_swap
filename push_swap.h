@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/16 02:22:20 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/17 19:03:57 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ typedef struct s_stks
 	int				b_half;
 	int				b_pivot;
 	int				b_last;
-	char			current_stk;
 	int				debug;
-	int				counter;
+	int				ops;
 }	t_stks;
 
 // Functions for checking arguments. At ./args/ft_check_args.c
@@ -78,9 +77,13 @@ int		ft_value_last(t_stack *stk);
 int		ft_fst_a_ok(t_stack *stk, int val);
 int		ft_fst_b_ok(t_stack *stk, int val);
 
-
+// Functions for STACKS pivot
 void	ft_a_get_pivot(t_stks *stks);
 void	ft_b_get_pivot(t_stks *stks);
+
+// Functions for STACKS restore
+void	ft_a_restore(t_stks *stks, int to_restore);
+void	ft_b_restore(t_stks *stks, int to_restore);
 
 // Functions for STACKS check
 int		ft_is_sort(t_stack *stk);
@@ -90,8 +93,8 @@ void	ft_b_check(t_stks *stks);
 void	ft_check_stks(t_stks *stks);
 
 // Functions for STACKS printing
-void	ft_stk_print(t_stack *head, const char *mode);
 void	ft_stks_print(t_stks *stks);
+void	ft_stks_print_info(t_stks *stks);
 
 // Stack Operations
 int		ft_swap(t_stack **stk);
@@ -119,12 +122,14 @@ int		rbsb(t_stks *stks);
 int		sbrb(t_stks *stks);
 void	dump_b(t_stks *stks);
 
-// Functions for STACK SORTING
-int		ft_stks_sort(t_stks *stks);
+// Functions for STACK SORTING THREE
 int		ft_a_sort_three(t_stks *stks);
 int		ft_b_reverse_three(t_stks *stks);
+
+// Functions for STACK SORTING
+int		ft_stks_sort(t_stks *stks);
+void	ft_divide_conquer(t_stks *stks);
 void	ft_divide_a(t_stks *stks);
 void	ft_divide_b(t_stks *stks);
-void	ft_divide_conquer(t_stks *stks);
 
 #endif

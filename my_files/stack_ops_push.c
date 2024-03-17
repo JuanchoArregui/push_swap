@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 16:44:30 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/17 18:37:08 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	pa(t_stks *stks)
 	res_a = ft_push(stks, 'a');
 	if (!res_a)
 		return (0);
-	stks->counter += 1;
+	stks->ops += 1;
 	ft_printf("pb\n");
 	return (1);
 }
@@ -56,7 +56,7 @@ int	pb(t_stks *stks)
 	res_b = ft_push(stks, 'b');
 	if (!res_b)
 		return (0);
-	stks->counter += 1;
+	stks->ops += 1;
 	ft_printf("pa\n");
 	return (1);
 }

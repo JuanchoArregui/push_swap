@@ -6,7 +6,7 @@
 #    By: juancho <juancho@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2024/03/14 17:00:23 by juancho          ###   ########.fr        #
+#    Updated: 2024/03/17 18:23:21 by juancho          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,10 @@ CC = gcc
 # CFLAGS = -Wall -Wextra -Werror
 
 # use this for debugging:
-# CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 # use this for memmory leaks:
-CFLAGS = -Wall -Wextra -Werror -g
+# CFLAGS = -Wall -Wextra -Werror -g
 # valgrind --leak-check=full ./push_swap 3 2 1 9 5 4 8 7 6
 
 RM = rm -rf

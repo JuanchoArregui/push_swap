@@ -6,7 +6,7 @@
 /*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/14 16:39:59 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/17 18:37:08 by juancho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	sa(t_stks *stks)
 	res_a = ft_swap(&stks->a);
 	if (!res_a)
 		return (0);
-	stks->counter += 1;
+	stks->ops += 1;
 	ft_printf("sa\n");
 	return (1);
 }
@@ -46,7 +46,7 @@ int	sb(t_stks *stks)
 	res_b = ft_swap(&stks->b);
 	if (!res_b)
 		return (0);
-	stks->counter += 1;
+	stks->ops += 1;
 	ft_printf("sb\n");
 	return (1);
 }
@@ -60,7 +60,7 @@ int	ss(t_stks *stks)
 	res_b = ft_swap(&stks->b);
 	if (!res_a || !res_b)
 		return (0);
-	stks->counter += 1;
+	stks->ops += 1;
 	ft_printf("ss\n");
 	return (1);
 }

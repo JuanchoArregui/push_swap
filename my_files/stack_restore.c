@@ -1,51 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_ops_mix.c                                    :+:      :+:    :+:   */
+/*   stack_restore.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 19:12:38 by jarregui         ###   ########.fr       */
+/*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
+/*   Updated: 2024/03/17 19:02:16 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	rasa(t_stks *stks)
+void	ft_a_restore(t_stks *stks, int to_restore)
 {
-	ra(stks);
-	sa(stks);
-	return (1);
-}
+	int		counter;
 
-int	sara(t_stks *stks)
-{
-	sa(stks);
-	ra(stks);
-	return (1);
-}
-
-int	rbsb(t_stks *stks)
-{
-	rb(stks);
-	sb(stks);
-	return (1);
-}
-
-int	sbrb(t_stks *stks)
-{
-	sb(stks);
-	rb(stks);
-	return (1);
-}
-
-void	dump_b(t_stks *stks)
-{
-	if (stks->debug)
-		ft_printf("*************** A OK y rev B OK y solo queda volcar \n");
-	while (stks->b)
+	if (to_restore > 0 && stks->a_len_pend != stks->a_len)
 	{
-		pb(stks);
+		counter = 0;
+		while (counter < to_restore)
+		{
+			rra(stks);
+			counter++;
+		}
+	}
+}
+
+void	ft_b_restore(t_stks *stks, int to_restore)
+{
+	int		counter;
+
+	if (to_restore > 0 && stks->a_len_pend != stks->a_len)
+	{
+		counter = 0;
+		while (counter < to_restore)
+		{
+			rrb(stks);
+			counter++;
+		}
 	}
 }
