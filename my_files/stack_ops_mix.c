@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 19:12:38 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/17 19:51:43 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,4 @@ int	sbrb(t_stks *stks)
 	sb(stks);
 	rb(stks);
 	return (1);
-}
-
-void	dump_b(t_stks *stks)
-{
-	if (stks->debug)
-		ft_printf("*************** A OK y rev B OK y solo queda volcar \n");
-	while (stks->b)
-	{
-		pb(stks);
-	}
 }

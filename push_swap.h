@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 19:03:57 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/17 19:21:11 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ int		rasa(t_stks *stks);
 int		sara(t_stks *stks);
 int		rbsb(t_stks *stks);
 int		sbrb(t_stks *stks);
-void	dump_b(t_stks *stks);
 
 // Functions for STACK SORTING THREE
 int		ft_a_sort_three(t_stks *stks);
@@ -131,5 +130,6 @@ int		ft_stks_sort(t_stks *stks);
 void	ft_divide_conquer(t_stks *stks);
 void	ft_divide_a(t_stks *stks);
 void	ft_divide_b(t_stks *stks);
+void	dump_b(t_stks *stks);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 19:01:24 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/17 19:51:23 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_a_get_pivot(t_stks *stks)
 		{
 			if (stk_temp->value < stk->value)
 				smallers++;
-
 			stk_temp = stk_temp->next;
 		}
 		if (smallers == stks->a_half)

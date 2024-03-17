@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:21 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 19:13:48 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/17 19:44:09 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_stks_sort(t_stks *stks)
 		if (stks->debug)
 		{
 			ft_stks_print(stks);
-			ft_printf("\nTotal operaciones efectuadas: %d", stks->ops);
+			ft_printf("\nTotal operaciones efectuadas: %d\n", stks->ops);
 		}
 		ft_stk_free(stks->a);
 		ft_stk_free(stks->b);
@@ -30,6 +30,7 @@ int	ft_stks_sort(t_stks *stks)
 		ft_check_stks(stks);
 		if (stks->debug)
 		{
+			ft_printf("\n\n\n\n\nSITUACION ANTES DE IR A DIVIDE & CONQUER:\n");
 			ft_stks_print(stks);
 			ft_stks_print_info(stks);
 		}
@@ -45,7 +46,7 @@ void	ft_divide_a(t_stks *stks)
 	int		to_restore;
 
 	if (stks->debug)
-		ft_printf("*************** A no ordenado -> continuamos con divide_a \n");
+		ft_printf(">>>>> A no ordenado -> continuamos con divide_a \n");
 	counter = 0;
 	to_restore = 0;
 	if (stks->a_len_pend == 2)
@@ -88,7 +89,7 @@ void	ft_divide_b(t_stks *stks)
 	int		to_restore;
 
 	if (stks->debug)
-		ft_printf("*************** A ordenado, pero B desordenado -> con divide_b \n");
+		ft_printf(">>>>> A ordenado, pero B desordenado -> con divide_b \n");
 	counter = 0;
 	to_restore = 0;
 	if (stks->b_len_pend == 2)
@@ -97,8 +98,6 @@ void	ft_divide_b(t_stks *stks)
 	{
 		while (counter < stks->b_half)
 		{
-			// ft_printf("////////(stks->b)->value: %d - stks->b_pivot: %d\n", (stks->b)->value, stks->b_pivot);
-			
 			if ((stks->b)->value > stks->b_pivot)
 			{
 				pb(stks);
@@ -127,47 +126,36 @@ void	ft_divide_b(t_stks *stks)
 
 void	ft_divide_conquer(t_stks *stks)
 {
-	if (stks->a && stks->a_len <= 3)
+	if (stks->debug)
+		ft_printf("\nDECISION A TOMAR: \n");
+	if (stks->a && stks->a_len <= 3 && !ft_is_sort(stks->a))
 	{
-		if (!ft_is_sort(stks->a))
-		{
-			ft_a_sort_three(stks);
-		}
-		else
-		{
-			ft_printf("*************** A3 OK - pasamos a divide_b \n\n\n");
-			ft_divide_b(stks);
-		}
+		ft_a_sort_three(stks);
 	}
-	else if (stks->b && stks->b_len <= 3)
+	else if (stks->b && stks->b_len <= 3 && !ft_is_rev(stks->b))
 	{
-		if (!ft_is_rev(stks->b))
-		{
-			ft_b_reverse_three(stks);
-		}
-		else if (ft_is_sort(stks->a))
-		{
-			dump_b(stks);
-		}
-		else
-		{
-			ft_printf("*************** B3 OK - pasamos a divide_a \n\n\n");
-			ft_divide_a(stks);
-		}
+		ft_b_reverse_three(stks);
+	}
+	else if (ft_is_rev(stks->b) && (ft_is_sort(stks->a) || !stks->a))
+	{
+		dump_b(stks);
+	}
+	else if (!ft_is_sort(stks->a))
+	{
+		ft_divide_a(stks);
 	}
 	else
 	{
-		if (!ft_is_sort(stks->a))
-		{
-			ft_divide_a(stks);
-		}
-		else if (!ft_is_rev(stks->b))
-		{
-			ft_divide_b(stks);
-		} else
-		{
-			ft_printf("*************** ordenados y solo queda volcar \n\n\n");
-			dump_b(stks);
-		}
+		ft_divide_b(stks);
+	}
+}
+
+void	dump_b(t_stks *stks)
+{
+	if (stks->debug)
+		ft_printf(">>>>> A OK y rev B OK y solo queda volcar \n");
+	while (stks->b)
+	{
+		pb(stks);
 	}
 }

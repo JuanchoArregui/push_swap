@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 18:59:28 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/17 19:52:06 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	ft_value_last(t_stack *stk)
 
 int	ft_fst_a_ok(t_stack *stk, int val)
 {
-
 	while (stk && stk->value != val)
 	{
 		if (stk->value > val)
@@ -55,7 +54,6 @@ int	ft_fst_a_ok(t_stack *stk, int val)
 
 int	ft_fst_b_ok(t_stack *stk, int val)
 {
-
 	while (stk && stk->value != val)
 	{
 		if (stk->value < val)

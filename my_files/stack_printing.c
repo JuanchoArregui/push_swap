@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_printing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 18:38:26 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/17 19:50:44 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ void	ft_stks_print(t_stks *stks)
 
 void	ft_stks_print_info(t_stks *stks)
 {
-	ft_printf("\n NUM OPS: %d\n", stks->ops);
+	ft_printf("NUM OPS: %d\n", stks->ops);
 	ft_printf("stks->a_len:        %d  -  %d\n", stks->a_len, stks->b_len);
-	ft_printf("stks->a_first_srtd: %d  -  %d\n", stks->a_first_srtd, stks->b_first_rev);
-	ft_printf("stks->a_len_pend:   %d  -  %d\n", stks->a_len_pend, stks->b_len_pend);
+	ft_printf("stks->a_first_srtd: %d  -  ", stks->a_first_srtd);
+	ft_printf("%d\n", stks->b_first_rev);
+	ft_printf("stks->a_len_pend:   %d  -  ", stks->a_len_pend);
+	ft_printf("%d\n", stks->b_len_pend);
 	ft_printf("stks->a_half:       %d  -  %d\n", stks->a_half, stks->b_half);
 	ft_printf("stks->a_pivot:      %d  -  %d\n", stks->a_pivot, stks->b_pivot);
-	ft_printf("stks->a_last:       %d  -  %d\n", stks->a_last, stks->a_last);
+	ft_printf("stks->a_last:       %d  -  %d\n", stks->a_last, stks->b_last);
 }
