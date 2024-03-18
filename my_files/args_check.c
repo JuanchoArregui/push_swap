@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:37:00 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/18 00:10:13 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:08:37 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	ft_args_to_num(char **temp_args, t_array_int *arg_num)
 	{
 		check = ft_arg_to_i(temp_args, len - 1, arg_num);
 		if (arg_num->debug && check < 0)
-			ft_printf("\nDuplicado - ");
+			ft_printf("\nDuplicado:");
 		if (arg_num->debug && check < 1)
 			ft_printf("\nArg invalid pos: %d: %s\n", len, temp_args[len - 1]);
 		if (check < 1)

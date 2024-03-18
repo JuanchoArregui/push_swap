@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:21 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/18 17:00:14 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:02:49 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,7 @@ void	ft_divide_a(t_stks *stks)
 		{
 			if (stks->a->value < stks->a_pivot)
 			{
-				// ft_printf("////////(stks->a)->value: %d - stks->a_pivot: %d\n", (stks->a)->value, stks->a_pivot);
 				pa(stks);
-				// if (stks->b->value < ft_value_last(stks->b))
-				// {
-				// 	ft_printf("WARNING A: hemos pasado algo abajo. REVISAR!!!!!!!!!! \n");
-					
-				// 	if (stks->a && stks->a->value > ft_value_last(stks->a))
-				// 		rr(stks); //// mirar esto
-				// 	else
-				// 		rb(stks);
-				// }
-				// else 
 				if (stks->b->next && stks->b->value < stks->b->next->value)
 				{
 					if (stks->a && stks->a->next && stks->a->value > stks->a->next->value)
@@ -82,10 +71,6 @@ void	ft_divide_a(t_stks *stks)
 			}
 			else
 			{
-				//ra(stks); this main op here
-				// if (stks->b && (stks->b)->value < ft_value_last(stks->b))
-				// 	rr(stks);
-				// else
 				ra(stks);
 				to_restore++;
 			}
