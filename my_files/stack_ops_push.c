@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_ops_push.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juancho <juancho@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:54 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 18:37:08 by juancho          ###   ########.fr       */
+/*   Updated: 2024/03/18 13:21:49 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	pb(t_stks *stks)
 	res_b = ft_push(stks, 'b');
 	if (!res_b)
 		return (0);
+	stks->a->batch_limit = 0;
 	stks->ops += 1;
 	ft_printf("pa\n");
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 18:59:47 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 12:12:26 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_stack	*ft_stk_elem_new(int value, t_stack	*next)
 		return (NULL);
 	stack_elem->value = value;
 	stack_elem->next = next;
+	stack_elem->batch_limit = 0;
 	return (stack_elem);
 }
 

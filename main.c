@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/18 01:49:59 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:50:58 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,6 @@ int	main(int argc, char **argv)
 	ft_stks_sort(&stks);
 	return (0);
 }
-
-//Mirar divide a y b
-//añadir posible swap al hacer los movimientos
-
-//en divide_b mirar el reverse a ver qué hago
-//pq con el visualizador parece que no está odenado
-
-//checar con el visualizador si tiene sentido atacar siempre a
-//o si vuelvo a usar 'a' y 'b'
-
-
 
 // -1 2 1 4 5 6
 // 3 5 8 9 1 2 88 77 11 -3 678 99 878 934 231 0

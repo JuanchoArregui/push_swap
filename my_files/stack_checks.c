@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 12:19:56 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 18:59:52 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:31:50 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 int	ft_is_sort(t_stack *stk)
 {
-	t_stack	*st_next;
+	t_stack	*stk_current;
 
-	st_next = stk;
-	while (st_next && st_next->next)
+	stk_current = stk;
+	while (stk_current && stk_current->next)
 	{
-		if (st_next->value > st_next->next->value)
+		if (stk_current->value > stk_current->next->value)
 			return (0);
-		st_next = st_next->next;
+		stk_current = stk_current->next;
 	}
 	return (1);
 }
 
 int	ft_is_rev(t_stack *stk)
 {
-	t_stack	*st_next;
+	t_stack	*stk_current;
 
-	st_next = stk;
-	while (st_next && st_next->next)
+	stk_current = stk;
+	while (stk_current && stk_current->next)
 	{
-		if (st_next->value < st_next->next->value)
+		if (stk_current->value < stk_current->next->value)
 			return (0);
-		st_next = st_next->next;
+		stk_current = stk_current->next;
 	}
 	return (1);
 }
@@ -77,7 +77,7 @@ void	ft_b_check(t_stks *stks)
 	counter = 0;
 	if (stks->b)
 	{
-		while (stk && (!ft_is_rev(stk) || !ft_fst_a_ok(stks->a, stk->value)))
+		while (stk && !stk->batch_limit)
 		{
 			stk = stk->next;
 			counter += 1;
@@ -85,7 +85,7 @@ void	ft_b_check(t_stks *stks)
 		if (stk)
 		{
 			stks->b_first_rev = stk->value;
-			stks->b_len_pend = counter;
+			stks->b_len_pend = counter + 1;
 		}
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 21:18:43 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:48:15 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_array_int
 typedef struct s_stack
 {
 	int				value;
+	int				batch_limit;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -131,6 +132,10 @@ int		ft_stks_sort(t_stks *stks);
 void	ft_divide_conquer(t_stks *stks);
 void	ft_divide_a(t_stks *stks);
 void	ft_divide_b(t_stks *stks);
-void	dump_b(t_stks *stks);
+
+// Functions for Batches handling
+int		ft_batch_is_rev(t_stack *stk);
+void	ft_dump_batch(t_stks *stks);
+void	ft_dump_b(t_stks *stks);
 
 #endif

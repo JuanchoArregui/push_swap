@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:53:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 19:50:44 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 12:16:53 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	ft_stks_print(t_stks *stks)
 		if (stk_b_temp)
 		{
 			ft_printf("    %d", stk_b_temp->value);
+			if (stk_b_temp->batch_limit)
+				ft_printf("  ***** Batch Limit");
 			stk_b_temp = stk_b_temp->next;
 		}
-		else
-			ft_printf("");
 	}
 	ft_printf("\n___   ___");
 	ft_printf("\n A     B \n\n");
