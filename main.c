@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/18 00:11:59 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 01:34:42 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,6 @@ int	main(int argc, char **argv)
 // 3 5 8 9 1 2 88 77 11 -3 6 99 8 934 231 0 78 687 7476 8473  0 -1 -2
 // TESTER
 // https://github.com/julien-ctx/push-swap-tester
+// https://github.com/gemartin99/Push-Swap-Tester
+// VISUALIZER:
+// https://github.com/o-reo/push_swap_visualizer
