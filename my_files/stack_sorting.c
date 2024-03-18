@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:21 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/18 16:38:55 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:00:14 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,27 +142,15 @@ void	ft_divide_conquer(t_stks *stks)
 	if (stks->debug)
 		ft_printf("\nDECISION A TOMAR: \n");
 	if (stks->a && stks->a_len <= 3 && !ft_is_sort(stks->a))
-	{
 		ft_a_sort_three(stks);
-	}
 	else if (stks->b && stks->b_len <= 3 && !ft_is_rev(stks->b))
-	{
 		ft_b_reverse_three(stks);
-	}
 	else if (ft_is_rev(stks->b) && (ft_is_sort(stks->a) || !stks->a))
-	{
 		ft_dump_b(stks);
-	}
 	else if (!ft_is_sort(stks->a))
-	{
 		ft_divide_a(stks);
-	}
 	else if (ft_batch_is_rev(stks->b))
-	{
 		ft_dump_batch(stks);
-	}
 	else
-	{
 		ft_divide_b(stks);
-	}
 }
