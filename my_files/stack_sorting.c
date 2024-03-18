@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:21 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/17 19:44:09 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:03:16 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,28 +55,37 @@ void	ft_divide_a(t_stks *stks)
 	{
 		while (counter < stks->a_half)
 		{
-			if ((stks->a)->value < stks->a_pivot)
+			if (stks->a->value < stks->a_pivot)
 			{
 				// ft_printf("////////(stks->a)->value: %d - stks->a_pivot: %d\n", (stks->a)->value, stks->a_pivot);
-				
 				pa(stks);
-				// if (stks->b && (stks->b)->value < ft_value_last(stks->b) && stks->a && (stks->a)->value > ft_value_last(stks->a))
-				// 	rr(stks);
-				// else if (stks->b && (stks->b)->value < ft_value_last(stks->b))
-				// 	rb(stks);
-				// else if (stks->b && (stks->b)->next && (stks->b)->value < (stks->b)->next->value && stks->a && (stks->a)->next && (stks->a)->value > (stks->a)->next->value)
-				// 	ss(stks);
-				// else if (stks->b && (stks->b)->next && (stks->b)->value < (stks->b)->next->value)
-				// 	sb(stks);
+				if (stks->b)
+				{
+					if (stks->b->value < ft_value_last(stks->b))
+					{
+						if (stks->a && stks->a->value > ft_value_last(stks->a))
+							rr(stks); //// mirar esto
+						else
+							rb(stks);
+					}
+					else if (stks->b->next && stks->b->value < stks->b->next->value)
+					{
+						if (stks->a && stks->a->next && stks->a->value > stks->a->next->value)
+							ss(stks);
+						else
+							sb(stks);
+					}
+				}
 				counter++;
 			}
 			else
 			{
-				// if (stks->b && (stks->b)->value < ft_value_last(stks->b))
-				// 	rr(stks);
-				// else
+				//ra(stks); this main op here
+				if (stks->b && (stks->b)->value < ft_value_last(stks->b))
+					rr(stks);
+				else
 					ra(stks);
-					to_restore++;
+				to_restore++;
 			}
 		}
 	}
@@ -98,26 +107,36 @@ void	ft_divide_b(t_stks *stks)
 	{
 		while (counter < stks->b_half)
 		{
-			if ((stks->b)->value > stks->b_pivot)
+			if (stks->b->value > stks->b_pivot)
 			{
 				pb(stks);
-				// if (stks->a && (stks->a)->value > ft_value_last(stks->a) && stks->b && (stks->b)->value < ft_value_last(stks->b))
-				// 	rr(stks);
-				// else if (stks->a && (stks->a)->value > ft_value_last(stks->a))
-				// 	ra(stks);
-				// else if (stks->a && (stks->a)->next && (stks->a)->value > (stks->a)->next->value && stks->b && (stks->b)->next && (stks->b)->value < (stks->b)->next->value)
-				// 	ss(stks);
-				// else if (stks->a && (stks->a)->next && (stks->a)->value > (stks->a)->next->value)
-				// 	sb(stks);
+				if (stks->a)
+				{
+					if (stks->a->value > ft_value_last(stks->a))
+					{
+						if (stks->b && stks->b->value < ft_value_last(stks->b))
+							rr(stks); //// mirar esto
+						else
+							ra(stks);
+					}
+					else if (stks->a->next && stks->a->value > stks->a->next->value)
+					{
+						if (stks->b && stks->b->next && stks->b->value < stks->b->next->value)
+							ss(stks);
+						else
+							sa(stks);
+					}
+				}
 				counter++;
 			}
 			else
 			{
-				// if (stks->a && (stks->a)->value > ft_value_last(stks->a))
-				// 	rr(stks);
-				// else
+				//rb(stks); this main op here
+				if (stks->a && stks->a->value > ft_value_last(stks->a))
+					rr(stks);
+				else
 					rb(stks);
-					to_restore++;
+				to_restore++;
 			}
 		}
 		ft_b_restore(stks, to_restore);
