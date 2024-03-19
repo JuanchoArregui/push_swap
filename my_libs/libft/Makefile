@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juancho <juancho@student.42.fr>            +#+  +:+       +#+         #
+#    By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/25 15:39:13 by jarregui          #+#    #+#              #
-#    Updated: 2023/12/14 12:21:43 by juancho          ###   ########.fr        #
+#    Updated: 2024/03/19 16:25:01 by jarregui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 NAME		=	libft.a
 RM			=	/bin/rm -f
+
+# IMPORTANTE: ESTA PROHIBIDO USAR WILDCARD EN EL MAKEFILE
+# SEGUN LA NORMA HAY QUUE EXPLICITAR TODOS Y CADA UNOO DE LOS ARCHIVOS DEL CODIGO FUENTE
 SRCS		=	$(wildcard functions/*.c)
 
 OBJS		=	${SRCS:.c=.o}

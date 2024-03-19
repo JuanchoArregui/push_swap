@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juancho <juancho@student.42.fr>            +#+  +:+       +#+         #
+#    By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 13:58:00 by jarregui          #+#    #+#              #
-#    Updated: 2023/12/14 12:44:23 by juancho          ###   ########.fr        #
+#    Updated: 2024/03/19 16:24:39 by jarregui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ NAME		=	printf.a
 RM			=	/bin/rm -f
 EXEC_NAME	=	a.out
 
+# IMPORTANTE: ESTA PROHIBIDO USAR WILDCARD EN EL MAKEFILE
+# SEGUN LA NORMA HAY QUUE EXPLICITAR TODOS Y CADA UNOO DE LOS ARCHIVOS DEL CODIGO FUENTE
 SRCS		=	$(wildcard functions/*.c)
 
 OBJS		=	${SRCS:.c=.o}

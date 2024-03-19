@@ -6,12 +6,14 @@
 #    By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2024/03/19 12:59:58 by jarregui         ###   ########.fr        #
+#    Updated: 2024/03/19 16:20:07 by jarregui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
+# IMPORTANTE: ESTA PROHIBIDO USAR WILDCARD EN EL MAKEFILE
+# SEGUN LA NORMA HAY QUUE EXPLICITAR TODOS Y CADA UNOO DE LOS ARCHIVOS DEL CODIGO FUENTE
 SRCS = main.c $(wildcard my_files/*.c)
 
 OBJS = ${SRCS:.c=.o}

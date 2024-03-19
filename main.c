@@ -6,22 +6,29 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:20:38 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/19 12:24:31 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:26:08 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_get_leaks(void)
+{
+	system("leaks -q push_swap");
+}
 
 int	main(int argc, char **argv)
 {
 	t_array_int	arg_num;
 	t_stks		stks;
 
+	stks.debug = 0;
+	if (stks.debug == 0)
+		atexit(ft_get_leaks);
 	arg_num.length = 0;
 	arg_num.array_int = NULL;
 	if (argc < 2)
 		return (-1);
-	stks.debug = 0;
 	arg_num.debug = stks.debug;
 	ft_args_check(argc, argv, &arg_num);
 	stks.a = ft_stk_init(&arg_num);
