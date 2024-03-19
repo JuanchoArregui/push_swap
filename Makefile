@@ -6,7 +6,7 @@
 #    By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/05 17:13:29 by jarregui          #+#    #+#              #
-#    Updated: 2024/03/19 12:37:41 by jarregui         ###   ########.fr        #
+#    Updated: 2024/03/19 12:47:56 by jarregui         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,13 +36,13 @@ ${NAME}: ${OBJS}
 
 clean: 
 	@${RM} ${OBJS}
-	@${MAKE} -C ./my_libs/libft clean
-	@${MAKE} -C ./my_libs/printf clean
+# @${MAKE} -C ./my_libs/libft clean
+# @${MAKE} -C ./my_libs/printf clean
 
 fclean: clean
 	@${RM} ${NAME}
-	@${MAKE} -C ./my_libs/libft fclean
-	@${MAKE} -C ./my_libs/printf fclean
+# @${MAKE} -C ./my_libs/libft fclean
+# @${MAKE} -C ./my_libs/printf fclean
 
 re: fclean all
 
