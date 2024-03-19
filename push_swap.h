@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/18 17:54:13 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:21:46 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "my_libs/libft/libft.h"
 # include "my_libs/printf/printf.h"
-# include "my_libs/get_next_line/get_next_line.h"
 
 // Struct for storing the array of integers and its length
 typedef struct s_array_int
