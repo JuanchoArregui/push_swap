@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:20:21 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/18 17:02:49 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:00:58 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,7 @@ void	ft_divide_a(t_stks *stks)
 		while (counter < stks->a_half)
 		{
 			if (stks->a->value < stks->a_pivot)
-			{
-				pa(stks);
-				if (stks->b->next && stks->b->value < stks->b->next->value)
-				{
-					if (stks->a && stks->a->next && stks->a->value > stks->a->next->value)
-						ss(stks);
-					else
-						sb(stks);
-				}
-				counter++;
-				if (counter == stks->a_half - 1)
-					stks->b->batch_limit = 1;
-			}
+				counter = ft_a_do_pa(stks, counter);
 			else
 			{
 				ra(stks);
@@ -91,26 +79,7 @@ void	ft_divide_b(t_stks *stks)
 	while (counter < stks->b_len_pend)
 	{
 		if (stks->b->value > stks->b_pivot)
-		{
-			pb(stks);
-			// if (stks->a->value > ft_value_last(stks->a))
-			// {
-			// 	ft_printf("WARNING B: hemos pasado algo abajo. REVISAR!!!!!!!!!! \n");
-				
-			// 	if (stks->b && stks->b->value < ft_value_last(stks->b))
-			// 		rr(stks); //// mirar esto
-			// 	else
-			// 		ra(stks);
-			// }
-			// else 
-			if (stks->a->next && stks->a->value > stks->a->next->value)
-			{
-				if (stks->b && stks->b->next && stks->b->value < stks->b->next->value)
-					ss(stks);
-				else
-					sa(stks);
-			}
-		}
+			ft_b_do_pb(stks);
 		else
 		{
 			rb(stks);
@@ -119,7 +88,6 @@ void	ft_divide_b(t_stks *stks)
 		counter++;
 	}
 	ft_b_restore(stks, to_restore);
-
 }
 
 void	ft_divide_conquer(t_stks *stks)

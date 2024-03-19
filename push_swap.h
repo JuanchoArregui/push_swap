@@ -6,7 +6,7 @@
 /*   By: jarregui <jarregui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 17:19:37 by jarregui          #+#    #+#             */
-/*   Updated: 2024/03/19 10:21:46 by jarregui         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:59:43 by jarregui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,10 @@ int		ft_stks_sort(t_stks *stks);
 void	ft_divide_conquer(t_stks *stks);
 void	ft_divide_a(t_stks *stks);
 void	ft_divide_b(t_stks *stks);
+
+// Functions for divide 
+int		ft_a_do_pa(t_stks *stks, int counter);
+void	ft_b_do_pb(t_stks *stks);
 
 // Functions for Batches handling
 int		ft_batch_is_rev(t_stack *stk);
